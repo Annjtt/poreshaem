@@ -1358,8 +1358,8 @@ p {
 }
 
 .footer-logo-img {
-  width: clamp(80px, 15vw, 100px);
-  height: clamp(25px, 5vw, 35px);
+  width: 120px !important;
+  height: 60px !important;
 }
 
 .footer-links {
