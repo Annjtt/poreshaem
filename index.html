@@ -43,17 +43,91 @@
 
   <!-- Hero Section -->
   <section class="hero">
+    <!-- Фоновые декоративные элементы -->
+    <div class="hero-background">
+      <div class="hero-particles">
+        <div class="particle particle-1"></div>
+        <div class="particle particle-2"></div>
+        <div class="particle particle-3"></div>
+        <div class="particle particle-4"></div>
+        <div class="particle particle-5"></div>
+        <div class="particle particle-6"></div>
+      </div>
+      <div class="hero-gradient-orb orb-1"></div>
+      <div class="hero-gradient-orb orb-2"></div>
+      <div class="hero-gradient-orb orb-3"></div>
+    </div>
+    
     <div class="hero-container">
-        <div class="hero-logo">
-            <img src="logo.svg" alt="Порешаем - Репетиторский центр" class="hero-logo-svg">
-        </div>
+      <!-- Контентная часть -->
       <div class="hero-content">
-    <h1 class="hero-title">ТВОЁ МЕСТО ТУТ!</h1>
-    <p class="hero-subtitle">место, где учеба становится увлекательным приключением!</p>
-    <p class="hero-description">Добро пожаловать в репетиторский центр "ПОРЕШАЕМ" - место, где ваш ребенок сможет раскрыть свой потенциал и полюбить учебу!<br><br>Мы – команда опытных педагогов и психологов, которые помогают детям от 3-х до 11-ти лет достигать успехов в учебе и раскрывать свои таланты</p>
+        <!-- 1. Заголовок -->
+        <h1 class="hero-title">
+          <span class="title-text">ТВОЁ МЕСТО</span>
+          <span class="title-accent">ТУТ!</span>
+        </h1>
+        
+        <!-- 2. Логотип с анимациями -->
+        <div class="hero-visual">
+          <div class="hero-logo-container">
+            <div class="logo-glow"></div>
+            <img src="logo.svg" alt="Порешаем - Репетиторский центр" class="hero-logo-svg">
+            <div class="logo-pulse-ring"></div>
+            <div class="logo-pulse-ring delay-1"></div>
+            <div class="logo-pulse-ring delay-2"></div>
+          </div>
+          
+          <!-- Плавающие иконки -->
+          <div class="hero-floating-elements">
+            <div class="floating-icon floating-1">
+              <i class="fas fa-graduation-cap"></i>
+            </div>
+            <div class="floating-icon floating-2">
+              <i class="fas fa-heart"></i>
+            </div>
+            <div class="floating-icon floating-3">
+              <i class="fas fa-star"></i>
+            </div>
+            <div class="floating-icon floating-4">
+              <i class="fas fa-rocket"></i>
+            </div>
+          </div>
+        </div>
+        
+        <!-- 3. Описание -->
+        <p class="hero-subtitle">Место, где учеба становится увлекательным приключением!</p>
+        
+        <div class="hero-description">
+          <p>Добро пожаловать в репетиторский центр <strong>"ПОРЕШАЕМ"</strong> - место, где ваш ребенок сможет раскрыть свой потенциал и полюбить учебу!</p>
+          <p>Мы – команда опытных педагогов и психологов, которые помогают детям от <span class="highlight">3-х до 11-ти лет</span> достигать успехов в учебе и раскрывать свои таланты</p>
+        </div>
+        
+        <div class="hero-stats">
+          <div class="stat-item">
+            <div class="stat-number">500+</div>
+            <div class="stat-label">Довольных детей</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">98%</div>
+            <div class="stat-label">Успешных результатов</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">5+</div>
+            <div class="stat-label">Лет опыта</div>
+          </div>
+        </div>
+        
+        <!-- 4. Кнопки -->
         <div class="hero-buttons">
-          <a href="#form" class="btn btn-primary">Бесплатная диагностика</a>
-          <a href="#services" class="btn btn-secondary">Наши услуги</a>
+          <a href="#form" class="btn btn-primary btn-modern">
+            <span class="btn-icon">🎯</span>
+            <span class="btn-text">Бесплатная диагностика</span>
+            <div class="btn-glow"></div>
+          </a>
+          <a href="#services" class="btn btn-secondary btn-modern">
+            <span class="btn-text">Наши услуги</span>
+            <span class="btn-arrow">→</span>
+          </a>
         </div>
       </div>
     </div>

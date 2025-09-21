@@ -18,9 +18,30 @@ document.addEventListener('DOMContentLoaded', function() {
   const hamburger = document.getElementById('hamburger');
   const navMenu = document.getElementById('nav-menu');
 
+  // Функция для управления скроллом
+  function toggleBodyScroll(disable) {
+    if (disable) {
+      // Сохраняем текущую позицию скролла
+      const scrollY = window.scrollY;
+      document.body.style.top = `-${scrollY}px`;
+      document.body.classList.add('menu-open');
+    } else {
+      // Восстанавливаем скролл
+      const scrollY = document.body.style.top;
+      document.body.classList.remove('menu-open');
+      document.body.style.top = '';
+      window.scrollTo(0, parseInt(scrollY || '0') * -1);
+    }
+  }
+
   hamburger.addEventListener('click', function() {
+    const isActive = navMenu.classList.contains('active');
+    
     hamburger.classList.toggle('active');
     navMenu.classList.toggle('active');
+    
+    // Управляем скроллом
+    toggleBodyScroll(!isActive);
   });
 
   // Закрытие меню при клике на ссылку
@@ -28,25 +49,22 @@ document.addEventListener('DOMContentLoaded', function() {
     link.addEventListener('click', function() {
       hamburger.classList.remove('active');
       navMenu.classList.remove('active');
-      document.body.style.overflow = 'auto'; // Восстанавливаем скролл
+      toggleBodyScroll(false); // Восстанавливаем скролл
     });
   });
   
-  // Блокировка скролла при открытом меню
-  hamburger.addEventListener('click', function() {
-    if (navMenu.classList.contains('active')) {
-      document.body.style.overflow = 'auto';
-    } else {
-      document.body.style.overflow = 'hidden';
-    }
-  });
-  
-  // Закрытие меню при клике вне его
+  // Закрытие меню при клике вне его или на оверлей
   document.addEventListener('click', function(e) {
-    if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
-      hamburger.classList.remove('active');
-      navMenu.classList.remove('active');
-      document.body.style.overflow = 'auto';
+    if (navMenu.classList.contains('active')) {
+      // Проверяем, кликнули ли вне меню или на оверлей
+      const isClickInsideMenu = navMenu.contains(e.target);
+      const isClickOnHamburger = hamburger.contains(e.target);
+      
+      if (!isClickInsideMenu && !isClickOnHamburger) {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+        toggleBodyScroll(false);
+      }
     }
   });
 
@@ -200,40 +218,50 @@ document.addEventListener('DOMContentLoaded', function() {
   // Убираем параллакс эффект для hero секции
   // (удалено для улучшения производительности и UX)
 
-  // Анимация счетчиков (если будут добавлены)
-  function animateCounters() {
-    const counters = document.querySelectorAll('.counter');
-    counters.forEach(counter => {
-      const target = parseInt(counter.dataset.target);
-      const duration = 2000;
-      const step = target / (duration / 16);
-      let current = 0;
+  // Анимация счетчиков статистики в hero секции
+  function animateHeroStats() {
+    const statNumbers = document.querySelectorAll('.stat-number');
+    
+    statNumbers.forEach(statNumber => {
+      const text = statNumber.textContent;
+      const target = parseInt(text.replace(/[^\d]/g, ''));
+      const suffix = text.replace(/[\d]/g, '');
       
-      const timer = setInterval(() => {
-        current += step;
-        counter.textContent = Math.floor(current);
+      if (target && !isNaN(target)) {
+        const duration = 3000;
+        const step = target / (duration / 16);
+        let current = 0;
         
-        if (current >= target) {
-          counter.textContent = target;
-          clearInterval(timer);
-        }
-      }, 16);
+        const timer = setInterval(() => {
+          current += step;
+          if (current >= target) {
+            statNumber.textContent = target + suffix;
+            clearInterval(timer);
+          } else {
+            statNumber.textContent = Math.floor(current) + suffix;
+          }
+        }, 16);
+      }
     });
   }
 
   // Запуск анимации счетчиков при появлении в viewport
-  const counterObserver = new IntersectionObserver((entries) => {
+  const heroStatsObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        animateCounters();
-        counterObserver.unobserve(entry.target);
+        setTimeout(() => {
+          animateHeroStats();
+        }, 1000); // Задержка для совпадения с CSS анимацией
+        heroStatsObserver.unobserve(entry.target);
       }
     });
+  }, {
+    threshold: 0.5
   });
 
-  const counterSection = document.querySelector('.counters');
-  if (counterSection) {
-    counterObserver.observe(counterSection);
+  const heroStats = document.querySelector('.hero-stats');
+  if (heroStats) {
+    heroStatsObserver.observe(heroStats);
   }
 
   // Добавление класса для анимации при скролле
@@ -274,7 +302,7 @@ document.addEventListener('DOMContentLoaded', function() {
       // Закрытие мобильного меню
       hamburger.classList.remove('active');
       navMenu.classList.remove('active');
-      document.body.style.overflow = 'auto';
+      toggleBodyScroll(false);
     }
   });
 
