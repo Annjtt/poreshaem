@@ -173,6 +173,8 @@ p {
 }
 
 .cta-button {
+  font-family: 'Comic Relief', cursive, sans-serif;
+  font-weight: 600;
   background: var(--accent);
   color: var(--primary-bg) !important;
   padding: 0.5rem 1.5rem;
@@ -475,7 +477,7 @@ p {
 .hero-logo-svg {
   width: clamp(200px, 25vw, 350px);
   height: auto;
-  filter: drop-shadow(0 8px 30px rgba(248, 200, 33, 0.4));
+  filter: drop-shadow(0 8px 30px rgba(248, 202, 33, 0.226));
   transition: var(--transition);
   position: relative;
   z-index: 2;
@@ -492,7 +494,7 @@ p {
   height: 100%;
   border: 2px solid var(--accent);
   border-radius: 50%;
-  animation: logo-pulse 5s infinite;
+  animation: logo-pulse 4s infinite;
   opacity: 0;
 }
 
@@ -595,10 +597,11 @@ p {
 
 /* 3. Описание */
 .hero-subtitle {
+  font-family: 'Comic Relief', cursive, sans-serif;
   font-size: clamp(1.1rem, 2.5vw, 1.4rem);
   color: var(--text);
   margin-bottom: 0;
-  font-weight: 600;
+  font-weight: 400;
   opacity: 0;
   animation: subtitle-fade-in 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.5s both;
 }
@@ -710,6 +713,8 @@ p {
 
 /* Buttons */
 .btn {
+  font-family: 'Comic Relief', cursive, sans-serif;
+  font-weight: 600;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -728,6 +733,8 @@ p {
 
 /* Современные кнопки для hero */
 .btn-modern {
+  font-family: 'Comic Relief', cursive, sans-serif;
+  font-weight: 600;
   padding: 1rem 2rem;
   font-size: 1rem;
   flex: 1;
@@ -745,6 +752,8 @@ p {
 }
 
 .btn-primary {
+  font-family: 'Comic Relief', cursive, sans-serif;
+  font-weight: 600;
   background: linear-gradient(135deg, var(--accent) 0%, #e6b51e 100%);
   color: var(--primary-bg);
   border: none;
@@ -1230,6 +1239,11 @@ p {
   backdrop-filter: blur(10px);
 }
 
+.form-group select option {
+  color: #ffffff;
+  background-color: var(--primary-bg);
+}
+
 .form-group input::placeholder,
 .form-group textarea::placeholder {
   color: var(--text-secondary);
@@ -1332,8 +1346,11 @@ p {
 }
 
 .qr-placeholder {
-  font-size: 2rem;
   color: var(--primary-bg);
+}
+
+.qr-placeholder img {
+  vertical-align: middle;
 }
 
 /* Footer */
