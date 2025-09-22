@@ -818,7 +818,7 @@ p {
 .btn-large {
   padding: 1.2rem 3rem;
   font-size: 1.1rem;
-  width: 100%;
+  width: auto;
   position: relative;
   display: flex;
   justify-content: center;
@@ -1458,7 +1458,7 @@ p {
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.040);
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease;
@@ -1567,7 +1567,7 @@ p {
   
   .nav-menu .nav-link:last-child {
     border-bottom: none;
-    margin-top: 2rem;
+    margin-top: 1rem;
   }
   
   .nav-menu .cta-button {
@@ -1742,6 +1742,17 @@ p {
   .footer-links {
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   }
+
+  .qr-code {
+    margin-top: 1rem;
+    width: 120px;
+    height: 120px;
+  }
+
+  .qr-placeholder img {
+    width: 100px;
+    height: 100px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -1870,6 +1881,18 @@ p {
     font-size: 0.6rem;
     line-height: 1.1;
   }
+
+  .qr-code {
+    margin-top: 1rem;
+    width: 120px;
+    height: 120px;
+  }
+
+  .qr-placeholder img {
+    width: 100px;
+    height: 100px;
+  }
+
 }
 
 /* Print Styles */
@@ -2038,8 +2061,19 @@ textarea:focus {
   }
 
   .stat-number{
-        font-size: 1rem;
+        font-size: 1.2rem;
     }
+
+  .qr-code {
+    margin-top: 1rem;
+    width: 120px;
+    height: 120px;
+  }
+
+  .qr-placeholder img {
+    width: 100px;
+    height: 100px;
+  }
   
   /* Мобильное меню для очень маленьких экранов */
   .nav-menu {
