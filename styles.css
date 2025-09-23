@@ -481,6 +481,16 @@ p {
   transition: var(--transition);
   position: relative;
   z-index: 2;
+  animation: logo-subtle-pulse 3s ease-in-out infinite;
+}
+
+@keyframes logo-subtle-pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05); /* Очень небольшое увеличение */
+  }
 }
 
 .hero-logo-svg:hover {
@@ -494,7 +504,7 @@ p {
   height: 100%;
   border: 2px solid var(--accent);
   border-radius: 50%;
-  animation: logo-pulse 4s infinite;
+  animation: logo-pulse 3s infinite;
   opacity: 0;
 }
 
