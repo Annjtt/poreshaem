@@ -8,7 +8,7 @@
   --card-bg: rgba(255,255,255,0.08);
   --card-border: rgba(248, 200, 33, 0.4);
   --gradient: linear-gradient(135deg, #4E6717 0%, #5a7a1e 100%);
-  --shadow: 0 8px 32px rgba(0,0,0,0.3);
+  --shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
   --border-radius: 16px;
   --transition: all 0.3s ease;
 }
@@ -134,7 +134,7 @@ p {
 }
 
 .logo-subtitle {
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   color: var(--text-secondary);
   line-height: 1.2;
 }
@@ -1385,8 +1385,9 @@ p {
 }
 
 .footer-logo-img {
-  width: 120px !important;
-  height: 60px !important;
+  margin-left: 2.9rem;
+  width: 140px !important;
+  height: 80px !important;
 }
 
 .footer-links {
@@ -2083,6 +2084,17 @@ textarea:focus {
   .qr-placeholder img {
     width: 100px;
     height: 100px;
+  }
+
+  .footer-logo .logo {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .footer-logo-img {
+    width: 120px !important;
+    height: 60px !important;
   }
   
   /* Мобильное меню для очень маленьких экранов */
