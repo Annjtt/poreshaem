@@ -409,7 +409,7 @@ p {
 
 /* 1. Заголовок */
 .hero-title {
-  margin-top: 3rem;
+  margin-top: 0;
   margin-bottom: 0;
   line-height: 1;
   text-align: center;
@@ -1620,7 +1620,8 @@ p {
   }
   
   .hero-title {
-    margin-top: 1.5rem;
+    margin-top: 0;
+    margin-bottom: 0;
   }
   
   .hero-visual {
@@ -1801,7 +1802,8 @@ p {
   }
   
   .hero-title {
-    margin-top: 3rem;
+    margin-top: 0;
+    margin-bottom: 0;
   }
   
   .hero-visual {
@@ -2063,7 +2065,8 @@ textarea:focus {
   }
   
   .hero-title {
-    font-size: 3rem;
+    margin-top: 0;
+    margin-bottom: 0;
   }
   
   .hero-subtitle {
