@@ -249,9 +249,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const heroStatsObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        setTimeout(() => {
-          animateHeroStats();
-        }, 1000); // Задержка для совпадения с CSS анимацией
+        animateHeroStats(); // Запускаем БЕЗ ЗАДЕРЖКИ — одновременно с появлением
         heroStatsObserver.unobserve(entry.target);
       }
     });
