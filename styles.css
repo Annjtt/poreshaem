@@ -1672,7 +1672,8 @@ p {
   
   /* Уменьшаем частицы на мобильных */
   .particle {
-    display: none;
+    margin-top: 40px;
+    opacity: 0.1;
   }
   
   .hero-gradient-orb {
