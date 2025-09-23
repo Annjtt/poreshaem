@@ -1332,6 +1332,8 @@ p {
 }
 
 .qr-item {
+  align-items: center;
+  justify-content: center;
   text-align: center;
   padding: 1.5rem;
   background: var(--card-bg);
@@ -1904,6 +1906,17 @@ p {
     height: 100px;
   }
 
+  .footer-logo .logo {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .footer-logo-img {
+    margin-left: 0;
+    width: 120px !important;
+    height: 60px !important;
+  }
 }
 
 /* Print Styles */
@@ -2093,6 +2106,7 @@ textarea:focus {
   }
   
   .footer-logo-img {
+    margin-left: 0;
     width: 120px !important;
     height: 60px !important;
   }
