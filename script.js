@@ -268,9 +268,14 @@ document.addEventListener('DOMContentLoaded', function() {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('animate-in');
+        // Для карточек услуг добавляем класс появления слева/справа
+        if (entry.target.classList.contains('service-card')) {
+          entry.target.classList.add('appear-in');
+        }
+        animateObserver.unobserve(entry.target);
       }
     });
-  });
+  }, { threshold: 0.15 });
 
   animateElements.forEach(el => animateObserver.observe(el));
 
@@ -335,6 +340,35 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   console.log('Сайт "Порешаем" успешно загружен! 🎉');
+  // Интерактивное свечение карточек услуг от курсора
+  const serviceCards = document.querySelectorAll('.service-card');
+  serviceCards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      card.style.setProperty('--mx', `${x}px`);
+      card.style.setProperty('--my', `${y}px`);
+    });
+
+    // Небольшой 3D-tilt эффект
+    card.addEventListener('mouseenter', () => {
+      card.style.transition = 'transform 0.12s ease';
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'rotateX(0deg) rotateY(0deg)';
+    });
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const cx = rect.width / 2;
+      const cy = rect.height / 2;
+      const dx = (e.clientX - rect.left - cx) / cx;
+      const dy = (e.clientY - rect.top - cy) / cy;
+      const tiltX = (-dy * 4).toFixed(2);
+      const tiltY = (dx * 4).toFixed(2);
+      card.style.transform = `perspective(800px) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+    });
+  });
 });
 
 // Fallback анимации для случаев, когда AOS не загрузилась
