@@ -2410,6 +2410,7 @@ textarea:focus {
     width: 45px;
     height: 45px;
     font-size: 1.1rem;
+    z-index: 1000;
   }
 }
 
