@@ -3,10 +3,12 @@ document.addEventListener('DOMContentLoaded', function() {
   // Проверяем, загружена ли AOS библиотека
   if (typeof AOS !== 'undefined') {
     AOS.init({
-      duration: 800,
-      easing: 'ease-in-out',
+      duration: 1200,
+      easing: 'ease-out-cubic',
       once: true,
-      offset: 100
+      offset: 100,
+      delay: 0,
+      anchorPlacement: 'top-bottom'
     });
   } else {
     // Fallback для случаев, когда AOS не загрузилась
