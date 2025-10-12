@@ -2852,6 +2852,26 @@ textarea:focus {
   margin-bottom: 0;
 }
 
+.policy-return {
+  text-align: center;
+  margin-top: 3rem;
+  padding: 2rem 0;
+}
+
+.policy-return .btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.policy-return .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(248, 200, 33, 0.3);
+}
+
 /* Responsive Policy */
 @media (max-width: 768px) {
   .policy-section {
@@ -2883,6 +2903,16 @@ textarea:focus {
   
   .contact-info-policy {
     padding: 1rem;
+  }
+  
+  .policy-return {
+    margin-top: 2rem;
+    padding: 1.5rem 0;
+  }
+  
+  .policy-return .btn {
+    width: 100%;
+    max-width: 300px;
   }
 }
 
