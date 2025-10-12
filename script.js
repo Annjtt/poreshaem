@@ -148,6 +148,12 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
       }
       
+      // Проверка согласия с политикой конфиденциальности
+      if (!data.consent) {
+        showNotification('Пожалуйста, подтвердите согласие с политикой конфиденциальности', 'error');
+        return;
+      }
+      
       // Имитация отправки
       const submitBtn = contactForm.querySelector('button[type="submit"]');
       const originalText = submitBtn.textContent;
