@@ -1496,102 +1496,262 @@ p {
   background: rgba(255,255,255,0.15);
 }
 
-/* Contact Section */
+/* Contact Section - Modern Design */
 .contact {
   padding: clamp(3rem, 8vw, 6rem) 0;
-  background: rgba(0,0,0,0.1);
+  background: linear-gradient(135deg, rgba(78, 103, 23, 0.1) 0%, rgba(90, 122, 30, 0.05) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.contact::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 20% 80%, rgba(248, 200, 33, 0.03) 0%, transparent 50%),
+              radial-gradient(circle at 80% 20%, rgba(248, 200, 33, 0.03) 0%, transparent 50%);
+  pointer-events: none;
 }
 
 .contact-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 3rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
   align-items: start;
+  position: relative;
+  z-index: 1;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
 .contact-item {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 1.5rem;
-  margin-bottom: 2rem;
-  padding: 1.5rem;
-  background: var(--card-bg);
-  border-radius: var(--border-radius);
-  transition: var(--transition);
-  min-height: 80px;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(248, 200, 33, 0.2);
+  border-radius: 20px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(248, 200, 33, 0.1), transparent);
+  transition: left 0.6s ease;
+}
+
+.contact-item:hover::before {
+  left: 100%;
 }
 
 .contact-item:hover {
-  transform: translateX(10px);
-  box-shadow: var(--shadow);
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2),
+              0 0 30px rgba(248, 200, 33, 0.1);
+  border-color: rgba(248, 200, 33, 0.4);
 }
 
 .contact-icon {
-  width: 60px;
-  height: 60px;
-  background: var(--accent);
-  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, var(--accent) 0%, #ffd700 100%);
+  border-radius: 18px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   color: var(--primary-bg);
   flex-shrink: 0;
+  box-shadow: 0 8px 20px rgba(248, 200, 33, 0.3);
+  transition: all 0.3s ease;
+}
+
+.contact-item:hover .contact-icon {
+  transform: rotate(10deg) scale(1.1);
+  box-shadow: 0 12px 25px rgba(248, 200, 33, 0.4);
+}
+
+.contact-details {
+  flex: 1;
 }
 
 .contact-details h3 {
   color: var(--accent);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.8rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+
+.contact-details p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
 }
 
 .contact-details a {
   color: var(--text);
   text-decoration: none;
-  transition: var(--transition);
+  transition: all 0.3s ease;
+  position: relative;
+  font-weight: 500;
 }
 
 .contact-details a:hover {
   color: var(--accent);
+  text-shadow: 0 0 8px rgba(248, 200, 33, 0.3);
 }
 
+.contact-details a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent);
+  transition: width 0.3s ease;
+}
+
+.contact-details a:hover::after {
+  width: 100%;
+}
+
+/* QR Codes Section - Modern Design */
 .qr-codes {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  display: flex;
+  flex-direction: row;
   gap: 2rem;
+  align-items: center;
 }
 
 .qr-item {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  padding: 2.5rem 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(248, 200, 33, 0.2);
+  border-radius: 20px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(10px);
   text-align: center;
-  padding: 1.5rem;
-  background: var(--card-bg);
-  border-radius: var(--border-radius);
-  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  min-width: 200px;
+}
+
+.qr-item::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(from 0deg, transparent, rgba(248, 200, 33, 0.1), transparent);
+  animation: rotate 4s linear infinite;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.qr-item:hover::before {
+  opacity: 1;
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 .qr-item:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow);
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2),
+              0 0 40px rgba(248, 200, 33, 0.15);
+  border-color: rgba(248, 200, 33, 0.4);
 }
 
 .qr-code {
-  width: clamp(80px, 15vw, 120px);
-  height: clamp(80px, 15vw, 120px);
-  background: var(--text);
-  border-radius: 10px;
+  width: 140px;
+  height: 140px;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f8f8 100%);
+  border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 1rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.qr-code::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 18px;
+  background: linear-gradient(45deg, var(--accent), #ffd700, var(--accent));
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.qr-item:hover .qr-code::before {
+  opacity: 1;
+}
+
+.qr-item:hover .qr-code {
+  transform: scale(1.1);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
 }
 
 .qr-placeholder {
   color: var(--primary-bg);
+  transition: all 0.3s ease;
 }
 
 .qr-placeholder img {
   vertical-align: middle;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.qr-item:hover .qr-placeholder img {
+  transform: scale(1.05);
+}
+
+.qr-item p {
+  color: var(--text);
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin: 0;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.qr-item:hover p {
+  color: var(--accent);
+  text-shadow: 0 0 10px rgba(248, 200, 33, 0.3);
 }
 
 /* Footer */
@@ -1976,13 +2136,32 @@ p {
   }
   
   .contact-item {
-    flex-direction: column;
-    text-align: center;
-    gap: 1rem;
+    flex-direction: row;
+    text-align: left;
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
+  
+  .contact-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
   }
   
   .qr-codes {
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    flex-direction: row;
+    gap: 1.5rem;
+    justify-content: center;
+  }
+  
+  .qr-item {
+    min-width: 150px;
+    padding: 2rem 1.5rem;
+  }
+  
+  .qr-code {
+    width: 120px;
+    height: 120px;
   }
   
   .footer-links {
@@ -2441,7 +2620,27 @@ textarea:focus {
   }
   
   .qr-codes {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: stretch;
+  }
+  
+  .qr-item {
+    min-width: auto;
+    padding: 1.5rem;
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+  .qr-code {
+    width: 125px;
+    height: 125px;
+    margin: 0 auto 1rem;
+  }
+  
+  .qr-placeholder img {
+    width: 110px !important;
+    height: 110px !important;
   }
   
   /* Кнопка "наверх" для маленьких экранов */
@@ -2452,6 +2651,42 @@ textarea:focus {
     height: 45px;
     font-size: 1.1rem;
     z-index: 1000;
+  }
+}
+
+/* Дополнительные стили для очень маленьких экранов (до 360px) */
+@media (max-width: 360px) {
+  .contact-item {
+    padding: 1rem;
+    gap: 1rem;
+  }
+  
+  .contact-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+  }
+  
+  .contact-details h3 {
+    font-size: 1.1rem;
+  }
+  
+  .qr-item {
+    padding: 1rem;
+  }
+  
+  .qr-code {
+    width: 105px;
+    height: 105px;
+  }
+  
+  .qr-placeholder img {
+    width: 90px !important;
+    height: 90px !important;
+  }
+  
+  .qr-item p {
+    font-size: 1rem;
   }
 }
 
