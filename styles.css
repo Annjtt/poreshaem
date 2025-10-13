@@ -1759,6 +1759,7 @@ p {
   vertical-align: middle;
   border-radius: 8px;
   transition: all 0.3s ease;
+  cursor: pointer;
 }
 
 .qr-item:hover .qr-placeholder img {
@@ -2836,7 +2837,6 @@ textarea:focus {
 
 .policy-card {
   background: var(--card-bg);
-  border: 1px solid var(--card-border);
   border-radius: var(--border-radius);
   padding: 2.5rem;
   backdrop-filter: blur(10px);
@@ -2844,6 +2844,7 @@ textarea:focus {
   transition: var(--transition);
   position: relative;
   overflow: hidden;
+  border-bottom: 3px solid var(--accent);
 }
 
 .policy-card::before {
@@ -2851,9 +2852,11 @@ textarea:focus {
   position: absolute;
   top: 0;
   left: 0;
+  right: 0;
   bottom: 0;
-  width: 5px;
-  background: var(--accent);
+  background: linear-gradient(135deg, rgba(248, 200, 33, 0.02) 0%, transparent 50%);
+  opacity: 0;
+  transition: var(--transition);
 }
 
 .policy-card:hover {
