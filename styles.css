@@ -1589,11 +1589,11 @@ p {
 
 .contact-item {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 1.5rem;
-  padding: 2.5rem 2rem;
+  padding: 1.5rem 1.5rem;
   background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(248, 200, 33, 0.2);
+  border: 0px solid rgba(248, 200, 33, 0.2);
   border-radius: 20px;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   backdrop-filter: blur(10px);
@@ -1709,8 +1709,7 @@ p {
   flex-direction: column;
   align-items: center;
   padding: 2.5rem 2rem;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(248, 200, 33, 0.2);
+  border: 0px solid rgba(248, 200, 33, 0.2);
   border-radius: 20px;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   backdrop-filter: blur(10px);
@@ -1746,7 +1745,7 @@ p {
   transform: translateY(-10px) scale(1.05);
   box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2),
               0 0 40px rgba(248, 200, 33, 0.15);
-  border-color: rgba(248, 200, 33, 0.4);
+  border-color: rgba(253, 203, 21, 0.4);
 }
 
 .qr-code {
