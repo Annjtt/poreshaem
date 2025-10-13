@@ -114,21 +114,64 @@ document.addEventListener('DOMContentLoaded', function() {
   const phoneInput = document.getElementById('phone');
   if (phoneInput) {
     phoneInput.addEventListener('input', function(e) {
-      let value = e.target.value.replace(/\D/g, '');
-      if (value.length > 0) {
-        if (value.length <= 1) {
-          value = '+7 (' + value;
-        } else if (value.length <= 4) {
-          value = '+7 (' + value.substring(1);
-        } else if (value.length <= 7) {
-          value = '+7 (' + value.substring(1, 4) + ') ' + value.substring(4);
-        } else if (value.length <= 9) {
-          value = '+7 (' + value.substring(1, 4) + ') ' + value.substring(4, 7) + '-' + value.substring(7);
-        } else {
-          value = '+7 (' + value.substring(1, 4) + ') ' + value.substring(4, 7) + '-' + value.substring(7, 9) + '-' + value.substring(9, 11);
-        }
+      let input = e.target;
+      let value = input.value.replace(/\D/g, '');
+      
+      // Ограничиваем количество цифр (11 для российского номера)
+      if (value.length > 11) {
+        value = value.substring(0, 11);
       }
-      e.target.value = value;
+      
+      // Форматируем номер
+      let formattedValue = '';
+      if (value.length === 0) {
+        formattedValue = '';
+      } else if (value.length === 1) {
+        formattedValue = '+7 (' + value;
+      } else if (value.length <= 4) {
+        formattedValue = '+7 (' + value.substring(1);
+      } else if (value.length <= 7) {
+        formattedValue = '+7 (' + value.substring(1, 4) + ') ' + value.substring(4);
+      } else if (value.length <= 9) {
+        formattedValue = '+7 (' + value.substring(1, 4) + ') ' + value.substring(4, 7) + '-' + value.substring(7);
+      } else {
+        formattedValue = '+7 (' + value.substring(1, 4) + ') ' + value.substring(4, 7) + '-' + value.substring(7, 9) + '-' + value.substring(9);
+      }
+      
+      input.value = formattedValue;
+    });
+    
+    // Обработка клавиш
+    phoneInput.addEventListener('keydown', function(e) {
+      // Разрешаем: цифры, Backspace, Delete, Tab, Escape, Enter, стрелки
+      if (e.key.match(/[0-9]/) || 
+          ['Backspace', 'Delete', 'Tab', 'Escape', 'Enter', 'ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown'].includes(e.key)) {
+        return;
+      }
+      // Блокируем все остальные клавиши
+      e.preventDefault();
+    });
+    
+    // Обработка вставки
+    phoneInput.addEventListener('paste', function(e) {
+      e.preventDefault();
+      let paste = (e.clipboardData || window.clipboardData).getData('text');
+      let numbers = paste.replace(/\D/g, '');
+      
+      if (numbers.length > 0) {
+        // Если номер начинается с 8, заменяем на 7
+        if (numbers.startsWith('8')) {
+          numbers = '7' + numbers.substring(1);
+        }
+        
+        // Если номер начинается с 7, оставляем как есть
+        if (!numbers.startsWith('7')) {
+          numbers = '7' + numbers;
+        }
+        
+        phoneInput.value = numbers;
+        phoneInput.dispatchEvent(new Event('input'));
+      }
     });
   }
 
