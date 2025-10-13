@@ -1517,25 +1517,81 @@ p {
 }
 
 .contact-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-  align-items: start;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
   position: relative;
   z-index: 1;
 }
 
 .contact-info {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+/* Адаптивность для больших экранов */
+@media (min-width: 1200px) {
+  .contact-info {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+  }
+  
+  .contact-item {
+    padding: 2.5rem 2rem;
+    min-height: 130px;
+  }
+}
+
+@media (max-width: 1199px) and (min-width: 992px) {
+  .contact-info {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  
+  .contact-item {
+    padding: 2rem 1.8rem;
+    min-height: 120px;
+  }
+  
+  .contact-details p {
+    font-size: 0.95rem;
+  }
+  
+  .contact-icon {
+    width: 65px;
+    height: 65px;
+    font-size: 1.7rem;
+  }
+}
+
+@media (max-width: 991px) and (min-width: 769px) {
+  .contact-info {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.8rem;
+  }
+  
+  .contact-item {
+    padding: 2rem 1.5rem;
+    min-height: 110px;
+  }
+  
+  .contact-details p {
+    font-size: 0.9rem;
+  }
+  
+  .contact-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 1.6rem;
+  }
 }
 
 .contact-item {
   display: flex;
   align-items: flex-start;
   gap: 1.5rem;
-  padding: 2rem;
+  padding: 2.5rem 2rem;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(248, 200, 33, 0.2);
   border-radius: 20px;
@@ -1543,6 +1599,7 @@ p {
   backdrop-filter: blur(10px);
   position: relative;
   overflow: hidden;
+  min-height: 120px;
 }
 
 .contact-item::before {
@@ -1606,6 +1663,8 @@ p {
   color: var(--text-secondary);
   line-height: 1.6;
   margin: 0;
+  font-size: 1rem;
+  word-wrap: break-word;
 }
 
 .contact-details a {
@@ -1642,6 +1701,7 @@ p {
   flex-direction: row;
   gap: 2rem;
   align-items: center;
+  justify-content: center;
 }
 
 .qr-item {
@@ -2135,11 +2195,21 @@ p {
     gap: 2rem;
   }
   
+  .contact-info {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
   .contact-item {
     flex-direction: row;
     text-align: left;
     gap: 1.5rem;
-    padding: 1.5rem;
+    padding: 1.8rem 1.5rem;
+    min-height: 100px;
+  }
+  
+  .contact-details p {
+    font-size: 0.9rem;
   }
   
   .contact-icon {
@@ -2299,9 +2369,6 @@ p {
     padding: 1.5rem;
   }
   
-  /* Стили для контактов уже определены выше */
-  
-  /* Улучшения для логотипа на маленьких экранах */
   .logo {
     gap: 0.5rem;
   }
@@ -2357,6 +2424,11 @@ p {
   .form-consent .checkbox { width: 100%; justify-content: center; gap: 0.5rem; }
   .checkbox-box { width: 20px; height: 20px; flex: 0 0 20px; margin-top: 8px; }
   .checkbox-label { font-size: 0.82rem; max-width: calc(100% - 16px - 0.5rem); }
+
+  .contact-info {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
 }
 
 /* Print Styles */
@@ -2652,10 +2724,75 @@ textarea:focus {
     font-size: 1.1rem;
     z-index: 1000;
   }
+  
+  /* Стили контактов для 480px и меньше - как для 360px */
+  .contact-info {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+  
+  .contact-item {
+    flex-direction: row;
+    text-align: center;
+    gap: 1rem;
+    padding: 1rem;
+    min-height: auto;
+  }
+  
+  .contact-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+  }
+  
+  .contact-details h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .contact-details p {
+    font-size: 0.85rem;
+    text-align: start;
+  }
+  
+  /* QR коды для 480px и меньше */
+  .qr-codes {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+  }
+  
+  .qr-item {
+    padding: 1rem;
+    border-radius: 15px;
+    min-width: auto;
+    width: 100%;
+  }
+  
+  .qr-code {
+    width: 110px;
+    height: 110px;
+    border-radius: 12px;
+  }
+  
+  .qr-placeholder img {
+    width: 100px !important;
+    height: 100px !important;
+  }
+  
+  .qr-item p {
+    font-weight: 500;
+    font-size: 0.85rem;
+  }
 }
 
 /* Дополнительные стили для очень маленьких экранов (до 360px) */
 @media (max-width: 360px) {
+  .contact-info {
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+  }
+  
   .contact-item {
     padding: 1rem;
     gap: 1rem;
