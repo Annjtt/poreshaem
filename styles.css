@@ -949,15 +949,13 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2.5rem;
-  color: var(--primary-bg);
   box-shadow: 0 0 40px rgba(248, 200, 33, 0.4);
   z-index: 10;
 }
 
-.central-circle::before {
-  content: '💡';
+.central-circle i {
   font-size: 3rem;
+  color: var(--primary-bg);
 }
 
 .pulse-ring {
@@ -1614,6 +1612,7 @@ p {
   padding: 1.5rem 1.5rem;
   background: rgba(255, 255, 255, 0.05);
   border-radius: 20px;
+  border-left: 4px solid var(--accent);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   backdrop-filter: blur(10px);
   position: relative;
@@ -1640,7 +1639,6 @@ p {
   transform: translateY(-8px) scale(1.02);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2),
               0 0 30px rgba(248, 200, 33, 0.1);
-  border-color: rgba(248, 200, 33, 0.4);
 }
 
 .contact-icon {
@@ -2138,10 +2136,9 @@ p {
   .central-circle {
     width: 80px;
     height: 80px;
-    font-size: 2rem;
   }
   
-  .central-circle::before {
+  .central-circle i {
     font-size: 2rem;
   }
   
@@ -2252,6 +2249,11 @@ p {
     padding: 0 15px;
     max-width: 100%;
     margin: 0 auto;
+  }
+  
+  /* Дополнительное уменьшение лампочки на очень маленьких экранах */
+  .central-circle i {
+    font-size: 1.8rem;
   }
   
   .nav-container {
@@ -2654,10 +2656,9 @@ textarea:focus {
   .central-circle {
     width: 60px;
     height: 60px;
-    font-size: 1.5rem;
   }
   
-  .central-circle::before {
+  .central-circle i {
     font-size: 1.5rem;
   }
   
