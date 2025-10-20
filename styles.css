@@ -3119,6 +3119,7 @@ textarea:focus {
   color: var(--text-secondary);
   margin-bottom: 1.5rem;
   max-width: 800px;
+  margin-top: 2rem;
   margin-left: auto;
   margin-right: auto;
 }
@@ -3149,8 +3150,8 @@ textarea:focus {
 }
 
 .partners-about-text p {
-  font-size: clamp(1rem, 2.5vw, 1.1rem);
-  line-height: 1.7;
+  font-size: clamp(1.2rem, 2.5vw, 1.1rem);
+  line-height: 1.6;
   margin-bottom: 1.5rem;
   color: var(--text-secondary);
 }
@@ -3296,7 +3297,7 @@ textarea:focus {
   gap: 0.5rem;
   padding: 1.5rem;
   background: var(--card-bg);
-  border: 1px solid var(--card-border);
+  border-left: 3px solid var(--accent);
   border-radius: var(--border-radius);
   transition: var(--transition);
   backdrop-filter: blur(10px);
@@ -3509,7 +3510,7 @@ textarea:focus {
   }
   
   .partners-about-text p {
-    font-size: clamp(0.95rem, 3vw, 1.1rem);
+    font-size: clamp(1rem, 3vw, 1.1rem);
     line-height: 1.6;
   }
   
@@ -3625,7 +3626,7 @@ textarea:focus {
   }
   
   .partners-about-text p {
-    font-size: clamp(1rem, 3.5vw, 1rem);
+    font-size: clamp(1.1rem, 3.5vw, 1rem);
     line-height: 1.5;
   }
   
