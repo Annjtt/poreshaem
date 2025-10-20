@@ -2002,6 +2002,17 @@ p {
     font-weight: 500;
     letter-spacing: 0.5px;
   }
+
+  .nav-menu .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: var(--transition);
+  }
   
   .nav-menu .nav-link::before {
     content: '';
@@ -3140,7 +3151,7 @@ textarea:focus {
 .partners-about-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  gap: 1rem;
   align-items: center;
 }
 
@@ -3501,7 +3512,7 @@ textarea:focus {
   
   .partners-about-content {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1rem;
   }
   
   .partners-about-text {
