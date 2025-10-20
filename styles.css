@@ -1980,6 +1980,10 @@ p {
   .nav-menu.active .nav-link:nth-child(4) {
     transition-delay: 0.25s;
   }
+
+  .nav-menu.active .nav-link:nth-child(5) {
+    transition-delay: 0.25s;
+  }
   
   .hamburger {
     display: flex;
