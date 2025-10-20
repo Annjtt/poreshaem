@@ -3100,6 +3100,16 @@ textarea:focus {
   z-index: 2;
 }
 
+.partners-hero-title {
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+}
+
+.accent-text {
+  color: var(--accent);
+  font-weight: 600;
+}
+
 .partners-hero-subtitle {
   font-size: clamp(1.1rem, 3vw, 1.4rem);
   color: var(--text-secondary);
@@ -3168,6 +3178,10 @@ textarea:focus {
   text-align: center;
   transition: var(--transition);
   backdrop-filter: blur(10px);
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .audience-card:hover {
@@ -3280,6 +3294,10 @@ textarea:focus {
   backdrop-filter: blur(10px);
   position: relative;
   overflow: hidden;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .offer-card::before {
@@ -3347,6 +3365,7 @@ textarea:focus {
   border-radius: var(--border-radius);
   transition: var(--transition);
   backdrop-filter: blur(10px);
+  min-height: 180px;
 }
 
 .benefit-item:hover {
@@ -3416,6 +3435,13 @@ textarea:focus {
     padding: 100px 0 60px;
   }
   
+  .partners-hero-title {
+    margin-top: 1rem;
+    margin-bottom: 1.5rem;
+    font-size: clamp(1.8rem, 6vw, 2.5rem);
+    line-height: 1.3;
+  }
+  
   .partners-about-content {
     grid-template-columns: 1fr;
     gap: 2rem;
@@ -3423,6 +3449,11 @@ textarea:focus {
   
   .partners-about-text {
     padding-right: 0;
+  }
+  
+  .partners-about-text p {
+    font-size: clamp(0.95rem, 3vw, 1.1rem);
+    line-height: 1.6;
   }
   
   .partners-about-visual {
@@ -3434,6 +3465,20 @@ textarea:focus {
     gap: 1.5rem;
   }
   
+  .audience-card {
+    min-height: 240px;
+    padding: 1.5rem;
+  }
+  
+  .audience-card h3 {
+    font-size: 1.2rem;
+  }
+  
+  .audience-card p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  
   .resources-platforms {
     gap: 1.5rem;
   }
@@ -3443,10 +3488,35 @@ textarea:focus {
     gap: 1.5rem;
   }
   
+  .offer-card {
+    min-height: 280px;
+    padding: 1.5rem;
+  }
+  
+  .offer-card h3 {
+    font-size: 1.1rem;
+  }
+  
+  .offer-card p {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+  
   .benefit-item {
     flex-direction: column;
     text-align: center;
     gap: 1rem;
+    min-height: auto;
+    padding: 1.5rem;
+  }
+  
+  .benefit-content h3 {
+    font-size: 1.2rem;
+  }
+  
+  .benefit-content p {
+    font-size: 0.95rem;
+    line-height: 1.5;
   }
   
   .partners-cta-buttons {
@@ -3466,6 +3536,21 @@ textarea:focus {
     padding: 80px 0 40px;
   }
   
+  .partners-hero-title {
+    font-size: clamp(1.5rem, 7vw, 2rem);
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .partners-hero-subtitle {
+    font-size: clamp(1rem, 4vw, 1.2rem);
+    margin-bottom: 1rem;
+  }
+  
+  .partners-hero-description {
+    font-size: clamp(0.9rem, 3.5vw, 1.1rem);
+  }
+  
   .partners-about,
   .target-audience,
   .resources,
@@ -3475,10 +3560,36 @@ textarea:focus {
     padding: 60px 0;
   }
   
+  .partners-about-text p {
+    font-size: clamp(0.9rem, 3.5vw, 1rem);
+    line-height: 1.5;
+  }
+  
   .audience-card,
   .offer-card,
   .benefit-item {
-    padding: 1.5rem;
+    padding: 1.2rem;
+  }
+  
+  .audience-card {
+    min-height: 220px;
+  }
+  
+  .offer-card {
+    min-height: 260px;
+  }
+  
+  .audience-card h3,
+  .offer-card h3,
+  .benefit-content h3 {
+    font-size: 1.1rem;
+  }
+  
+  .audience-card p,
+  .offer-card p,
+  .benefit-content p {
+    font-size: 0.9rem;
+    line-height: 1.4;
   }
   
   .platform-item {
@@ -3488,5 +3599,13 @@ textarea:focus {
   
   .platform-item i {
     font-size: 1.5rem;
+  }
+  
+  .partners-cta-content h2 {
+    font-size: clamp(1.5rem, 6vw, 2rem);
+  }
+  
+  .partners-cta-content p {
+    font-size: clamp(0.9rem, 3.5vw, 1.1rem);
   }
 }
