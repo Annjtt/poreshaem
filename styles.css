@@ -3073,3 +3073,420 @@ textarea:focus {
     padding: 0 1rem;
   }
 }
+
+/* Partners Page Styles */
+.partners-hero {
+  background: var(--gradient);
+  padding: 120px 0 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.partners-hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="50" cy="10" r="0.5" fill="rgba(255,255,255,0.05)"/><circle cx="10" cy="60" r="0.5" fill="rgba(255,255,255,0.05)"/><circle cx="90" cy="40" r="0.5" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.partners-hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.partners-hero-subtitle {
+  font-size: clamp(1.1rem, 3vw, 1.4rem);
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.partners-hero-description {
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  color: var(--text);
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.partners-about {
+  padding: 80px 0;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.partners-about-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.partners-about-text {
+  padding-right: 2rem;
+}
+
+.partners-about-text p {
+  font-size: clamp(1rem, 2.5vw, 1.1rem);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  color: var(--text-secondary);
+}
+
+.partners-about-visual {
+  position: relative;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.target-audience {
+  padding: 80px 0;
+  background: var(--gradient);
+}
+
+.audience-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.audience-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  text-align: center;
+  transition: var(--transition);
+  backdrop-filter: blur(10px);
+}
+
+.audience-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow);
+  border-color: var(--accent);
+}
+
+.audience-icon {
+  width: 80px;
+  height: 80px;
+  background: var(--accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  font-size: 2rem;
+  color: var(--primary-bg);
+}
+
+.audience-card h3 {
+  color: var(--accent);
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.audience-card p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.resources {
+  padding: 80px 0;
+  background: rgba(255, 255, 255, 0.02);
+  text-align: center;
+}
+
+.resources-content p {
+  font-size: clamp(1.1rem, 3vw, 1.3rem);
+  color: var(--text-secondary);
+  margin-bottom: 2rem;
+}
+
+.resources-platforms {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+
+.platform-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.5rem;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+  backdrop-filter: blur(10px);
+  min-width: 120px;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.platform-item:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+  box-shadow: var(--shadow);
+  text-decoration: none;
+  color: inherit;
+}
+
+.platform-item:active {
+  transform: translateY(-1px);
+}
+
+.platform-item i {
+  font-size: 2rem;
+  color: var(--accent);
+}
+
+.platform-item span {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.partnership-offers {
+  padding: 80px 0;
+  background: var(--gradient);
+}
+
+.offers-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.offer-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--border-radius);
+  padding: 2rem;
+  text-align: center;
+  transition: var(--transition);
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+.offer-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(248, 200, 33, 0.1), transparent);
+  transition: left 0.6s ease;
+}
+
+.offer-card:hover::before {
+  left: 100%;
+}
+
+.offer-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow);
+  border-color: var(--accent);
+}
+
+.offer-icon {
+  width: 70px;
+  height: 70px;
+  background: var(--accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  font-size: 1.8rem;
+  color: var(--primary-bg);
+}
+
+.offer-card h3 {
+  color: var(--accent);
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.offer-card p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.partnership-benefits {
+  padding: 80px 0;
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.benefits-grid {
+  margin-top: 3rem;
+}
+
+.benefit-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 2rem;
+  margin-bottom: 3rem;
+  padding: 2rem;
+  background: var(--card-bg);
+  border-left: 4px solid var(--accent);
+  border-radius: var(--border-radius);
+  transition: var(--transition);
+  backdrop-filter: blur(10px);
+}
+
+.benefit-item:hover {
+  transform: translateX(10px);
+  border-color: var(--accent);
+  box-shadow: var(--shadow);
+}
+
+.benefit-number {
+  width: 60px;
+  height: 60px;
+  background: var(--accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary-bg);
+  flex-shrink: 0;
+}
+
+.benefit-content h3 {
+  color: var(--accent);
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+}
+
+.benefit-content p {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.partners-cta {
+  padding: 80px 0;
+  background: var(--gradient);
+  text-align: center;
+}
+
+.partners-cta-content h2 {
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+}
+
+.partners-cta-content p {
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.7;
+}
+
+.partners-cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 3rem;
+  flex-wrap: wrap;
+}
+
+/* Responsive Partners */
+@media (max-width: 768px) {
+  .partners-hero {
+    padding: 100px 0 60px;
+  }
+  
+  .partners-about-content {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .partners-about-text {
+    padding-right: 0;
+  }
+  
+  .partners-about-visual {
+    height: 300px;
+  }
+  
+  .audience-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .resources-platforms {
+    gap: 1.5rem;
+  }
+  
+  .offers-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .benefit-item {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+  
+  .partners-cta-buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .partners-cta-buttons .btn {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .partners-hero {
+    padding: 80px 0 40px;
+  }
+  
+  .partners-about,
+  .target-audience,
+  .resources,
+  .partnership-offers,
+  .partnership-benefits,
+  .partners-cta {
+    padding: 60px 0;
+  }
+  
+  .audience-card,
+  .offer-card,
+  .benefit-item {
+    padding: 1.5rem;
+  }
+  
+  .platform-item {
+    min-width: 100px;
+    padding: 1rem;
+  }
+  
+  .platform-item i {
+    font-size: 1.5rem;
+  }
+}

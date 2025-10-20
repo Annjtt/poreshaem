@@ -562,3 +562,46 @@ const notificationStyles = `
 const styleSheet = document.createElement('style');
 styleSheet.textContent = notificationStyles;
 document.head.appendChild(styleSheet);
+
+// Функция для копирования email в буфер обмена
+function copyEmailToClipboard(event) {
+  const email = 'poreshaem.vl@gmail.com';
+  
+  // Пытаемся скопировать в буфер обмена
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(email).then(() => {
+      showNotification('Email скопирован в буфер обмена!', 'success');
+    }).catch(() => {
+      // Fallback для старых браузеров
+      fallbackCopyTextToClipboard(email);
+    });
+  } else {
+    // Fallback для старых браузеров
+    fallbackCopyTextToClipboard(email);
+  }
+}
+
+// Fallback функция для копирования
+function fallbackCopyTextToClipboard(text) {
+  const textArea = document.createElement('textarea');
+  textArea.value = text;
+  textArea.style.position = 'fixed';
+  textArea.style.left = '-999999px';
+  textArea.style.top = '-999999px';
+  document.body.appendChild(textArea);
+  textArea.focus();
+  textArea.select();
+  
+  try {
+    const successful = document.execCommand('copy');
+    if (successful) {
+      showNotification('Email скопирован в буфер обмена!', 'success');
+    } else {
+      showNotification('Не удалось скопировать email. Адрес: ' + text, 'info');
+    }
+  } catch (err) {
+    showNotification('Не удалось скопировать email. Адрес: ' + text, 'info');
+  }
+  
+  document.body.removeChild(textArea);
+}
