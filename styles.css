@@ -3497,6 +3497,336 @@ textarea:focus {
   flex-wrap: wrap;
 }
 
+/* Gallery Section */
+.gallery-section {
+  padding: 80px 0;
+  background: var(--primary-bg);
+  position: relative;
+  overflow: hidden;
+}
+
+.gallery-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(248, 200, 33, 0.1) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.gallery-header {
+  text-align: center;
+  margin-bottom: 60px;
+  position: relative;
+  z-index: 1;
+}
+
+.gallery-header .section-title {
+  margin-bottom: 1rem;
+  color: var(--text);
+}
+
+.gallery-header .section-subtitle {
+  color: var(--text-secondary);
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.gallery-wrapper {
+  position: relative;
+  z-index: 1;
+  padding: 40px 0;
+}
+
+.gallery-swiper {
+  width: 100%;
+  min-height: 500px;
+  max-height: 700px;
+  padding-bottom: 60px;
+  overflow: visible;
+  border-radius: var(--border-radius);
+}
+
+.gallery-swiper .swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
+  height: auto;
+  overflow: hidden;
+  border-radius: var(--border-radius);
+}
+
+/* Настройки для coverflow эффекта (как в референсе) */
+.gallery-swiper[data-effect="coverflow"] .swiper-slide {
+  opacity: 0.4;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  visibility: visible !important;
+  pointer-events: auto;
+}
+
+.gallery-swiper[data-effect="coverflow"] .swiper-slide-active {
+  opacity: 1 !important;
+  visibility: visible !important;
+  z-index: 10;
+}
+
+.gallery-swiper[data-effect="coverflow"] .swiper-slide-active-prev,
+.gallery-swiper[data-effect="coverflow"] .swiper-slide-active-next {
+  opacity: 0.6 !important;
+  visibility: visible !important;
+  z-index: 5;
+}
+
+/* Дополнительные классы для соседних слайдов */
+.gallery-swiper[data-effect="coverflow"] .swiper-slide-prev,
+.gallery-swiper[data-effect="coverflow"] .swiper-slide-next {
+  opacity: 0.5 !important;
+  visibility: visible !important;
+}
+
+.gallery-slide-content {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  background: transparent;
+  border-bottom: 6px solid var(--accent);
+}
+
+.gallery-slide-content img {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* Кнопки навигации галереи */
+.gallery-button-next,
+.gallery-button-prev {
+  width: 50px;
+  height: 50px;
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border: 2px solid var(--card-border);
+  border-radius: 50%;
+  color: var(--accent);
+  transition: var(--transition);
+  margin-top: -25px;
+}
+
+.gallery-button-next:after,
+.gallery-button-prev:after {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.gallery-button-next:hover,
+.gallery-button-prev:hover {
+  background: var(--accent);
+  color: var(--primary-bg);
+  border-color: var(--accent);
+  transform: scale(1.1);
+}
+
+.gallery-button-next:active,
+.gallery-button-prev:active {
+  transform: scale(0.95);
+}
+
+/* Пагинация галереи */
+.gallery-pagination {
+  bottom: 0 !important;
+}
+
+.gallery-pagination .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background: var(--text-secondary);
+  opacity: 0.5;
+  transition: var(--transition);
+  margin: 0 6px;
+}
+
+.gallery-pagination .swiper-pagination-bullet-active {
+  background: var(--accent);
+  opacity: 1;
+  transform: scale(1.3);
+}
+
+/* Адаптивность галереи */
+@media (max-width: 1024px) {
+  .gallery-swiper {
+    height: 65vh;
+    min-height: 450px;
+    max-height: 600px;
+  }
+  
+  .gallery-swiper .swiper-slide {
+    height: 55vh;
+    min-height: 400px;
+    max-height: 550px;
+  }
+}
+
+@media (max-width: 767px) {
+  .gallery-section {
+    padding: 60px 0;
+  }
+  
+  .gallery-header {
+    margin-bottom: 40px;
+  }
+  
+  .gallery-wrapper {
+    padding: 20px 0;
+  }
+  
+  .gallery-swiper {
+    height: auto;
+    min-height: 400px;
+    padding-bottom: 50px;
+  }
+  
+  .gallery-swiper .swiper-slide {
+    width: 85% !important;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .gallery-slide-content {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+  }
+  
+  .gallery-slide-content img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    max-height: 60vh;
+    object-fit: contain;
+  }
+  
+  /* На мобильных показываем только активный слайд */
+  .gallery-swiper[data-effect="slide"] .swiper-slide {
+    opacity: 1;
+  }
+  
+  .gallery-swiper[data-effect="slide"] .swiper-slide:not(.swiper-slide-active) {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+  
+  .gallery-swiper[data-effect="slide"] .swiper-slide-active {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .gallery-button-next,
+  .gallery-button-prev {
+    width: 40px;
+    height: 40px;
+    margin-top: -20px;
+  }
+  
+  .gallery-button-next:after,
+  .gallery-button-prev:after {
+    font-size: 16px;
+  }
+  
+  .gallery-pagination .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    margin: 0 4px;
+  }
+}
+
+@media (min-width: 768px) {
+  .gallery-swiper .swiper-slide {
+    width: 400px;
+    height: auto;
+  }
+  
+  .gallery-slide-content {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+  }
+  
+  .gallery-slide-content img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+  }
+  
+  /* Ограничиваем видимость до 3 слайдов максимум */
+  .gallery-swiper[data-effect="coverflow"] .swiper-slide {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+}
+
+@media (max-width: 480px) {
+  .gallery-section {
+    padding: 40px 0;
+  }
+  
+  .gallery-header {
+    margin-bottom: 30px;
+  }
+  
+  .gallery-swiper {
+    height: auto;
+    min-height: 350px;
+    padding-bottom: 40px;
+  }
+  
+  .gallery-swiper .swiper-slide {
+    width: 90% !important;
+    height: auto;
+  }
+  
+  .gallery-slide-content {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+  }
+  
+  .gallery-slide-content img {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    max-height: 55vh;
+    object-fit: contain;
+  }
+  
+  .gallery-button-next,
+  .gallery-button-prev {
+    width: 35px;
+    height: 35px;
+    margin-top: -17.5px;
+  }
+  
+  .gallery-button-next:after,
+  .gallery-button-prev:after {
+    font-size: 14px;
+  }
+}
+
 /* Responsive Partners */
 @media (max-width: 768px) {
   .partners-hero {

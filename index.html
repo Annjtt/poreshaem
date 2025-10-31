@@ -12,6 +12,9 @@
   <!-- Font Awesome для иконок -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="swiper-bundle.min.css">
+  
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -281,6 +284,54 @@
     </div>
   </section>
 
+  <!-- Gallery Section -->
+  <section class="gallery-section" id="gallery">
+    <div class="container">
+      <div class="gallery-header" data-aos="fade-up">
+        <h2 class="section-title">Наша команда</h2>
+        <p class="section-subtitle">Познакомьтесь с нашими талантливыми педагогами</p>
+      </div>
+      
+      <div class="gallery-wrapper" data-aos="fade-up" data-aos-delay="200">
+        <div class="swiper gallery-swiper" id="gallerySwiper">
+          <div class="swiper-wrapper">
+            <!-- Слайды будут заполняться одним изображением повторно для демонстрации -->
+            <div class="swiper-slide">
+              <div class="gallery-slide-content">
+                <img src="asset/gallery/teacher_and_children.webp" alt="Учитель с детьми" loading="lazy">
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="gallery-slide-content">
+                <img src="asset/gallery/teacher_and_children.webp" alt="Учитель с детьми" loading="lazy">
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="gallery-slide-content">
+                <img src="asset/gallery/teacher_and_children.webp" alt="Учитель с детьми" loading="lazy">
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="gallery-slide-content">
+                <img src="asset/gallery/teacher_and_children.webp" alt="Учитель с детьми" loading="lazy">
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="gallery-slide-content">
+                <img src="asset/gallery/teacher_and_children.webp" alt="Учитель с детьми" loading="lazy">
+              </div>
+            </div>
+          </div>
+          <!-- Навигация -->
+          <div class="swiper-button-next gallery-button-next"></div>
+          <div class="swiper-button-prev gallery-button-prev"></div>
+          <!-- Пагинация -->
+          <div class="swiper-pagination gallery-pagination"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CTA Section -->
   <section class="cta-section" id="form">
     <div class="container">
@@ -467,6 +518,7 @@
   <!-- Scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.min.js" 
           onerror="console.warn('AOS library failed to load from CDN, using fallback animations')"></script>
+  <script src="swiper-bundle.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

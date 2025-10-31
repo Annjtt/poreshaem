@@ -391,6 +391,164 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   console.log('Сайт "Порешаем" успешно загружен! 🎉');
+  
+  // Инициализация 3D галереи Swiper (как в референсе)
+  if (typeof Swiper !== 'undefined') {
+    const gallerySwiper = new Swiper('#gallerySwiper', {
+      loop: true,
+      speed: 800,
+      grabCursor: true,
+      centeredSlides: true,
+      effect: 'coverflow',
+      slidesPerView: 'auto',
+      spaceBetween: 0,
+      coverflowEffect: {
+        rotate: 50,
+        stretch: 0,
+        depth: 100,
+        modifier: 1,
+        slideShadows: true,
+      },
+      watchSlidesProgress: true,
+      watchSlidesVisibility: true,
+      autoplay: {
+        delay: 4000,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true,
+      },
+      navigation: {
+        nextEl: '.gallery-button-next',
+        prevEl: '.gallery-button-prev',
+      },
+      pagination: {
+        el: '.gallery-pagination',
+        clickable: true,
+        dynamicBullets: false,
+      },
+      keyboard: {
+        enabled: true,
+        onlyInViewport: true,
+      },
+      // Адаптивность
+      breakpoints: {
+        320: {
+          effect: 'slide',
+          slidesPerView: 1,
+          spaceBetween: 0,
+          coverflowEffect: {},
+        },
+        768: {
+          effect: 'coverflow',
+          slidesPerView: 'auto',
+          spaceBetween: 0,
+          coverflowEffect: {
+            rotate: 50,
+            stretch: 0,
+            depth: 100,
+            modifier: 1,
+            slideShadows: true,
+          },
+        },
+      },
+    });
+    
+    // Устанавливаем data-атрибут для CSS селекторов
+    const swiperEl = document.getElementById('gallerySwiper');
+    if (swiperEl) {
+      const updateEffectAttribute = () => {
+        const currentEffect = gallerySwiper.params.effect;
+        swiperEl.setAttribute('data-effect', currentEffect || 'coverflow');
+      };
+      
+      // Устанавливаем начальный атрибут
+      const isMobile = window.innerWidth < 768;
+      swiperEl.setAttribute('data-effect', isMobile ? 'slide' : 'coverflow');
+      
+      // Обновляем атрибут при изменении эффекта
+      gallerySwiper.on('setTransition', updateEffectAttribute);
+      
+      // Функция для обеспечения видимости 3 слайдов (только для coverflow)
+      const ensureThreeVisibleSlides = () => {
+        if (gallerySwiper.params.effect !== 'coverflow') return;
+        
+        const slides = Array.from(swiperEl.querySelectorAll('.swiper-slide'));
+        const activeSlide = swiperEl.querySelector('.swiper-slide-active');
+        
+        if (!activeSlide || slides.length === 0) return;
+        
+        const activeIndex = slides.indexOf(activeSlide);
+        
+        slides.forEach((slide, index) => {
+          // Проверяем классы Swiper
+          const hasActive = slide.classList.contains('swiper-slide-active');
+          const hasPrev = slide.classList.contains('swiper-slide-active-prev') || 
+                         slide.classList.contains('swiper-slide-prev');
+          const hasNext = slide.classList.contains('swiper-slide-active-next') || 
+                         slide.classList.contains('swiper-slide-next');
+          
+          // Также проверяем расстояние от активного слайда
+          let distance = Math.abs(index - activeIndex);
+          if (gallerySwiper.params.loop && slides.length > 0) {
+            distance = Math.min(distance, slides.length - distance);
+          }
+          
+          // Показываем активный и два соседних (расстояние <= 1)
+          const isVisible = hasActive || hasPrev || hasNext || distance <= 1;
+          
+          if (isVisible) {
+            // Убираем любые inline стили, которые могут скрывать слайд
+            slide.style.opacity = '';
+            slide.style.visibility = '';
+            slide.style.pointerEvents = '';
+            slide.style.display = '';
+            // НЕ трогаем transform, так как его управляет Swiper
+          } else {
+            // Скрываем только слайды, которые действительно далеко
+            slide.style.opacity = '0';
+            slide.style.visibility = 'hidden';
+            slide.style.pointerEvents = 'none';
+          }
+        });
+        
+        // Логирование для отладки
+        const visibleSlides = slides.filter(s => {
+          const idx = slides.indexOf(s);
+          let dist = Math.abs(idx - activeIndex);
+          if (gallerySwiper.params.loop && slides.length > 0) {
+            dist = Math.min(dist, slides.length - dist);
+          }
+          return dist <= 1;
+        });
+      };
+      
+      // Обновляем видимость при переключении слайдов
+      gallerySwiper.on('slideChange', () => {
+        setTimeout(ensureThreeVisibleSlides, 200);
+      });
+      gallerySwiper.on('transitionEnd', ensureThreeVisibleSlides);
+      gallerySwiper.on('setTranslate', () => {
+        requestAnimationFrame(ensureThreeVisibleSlides);
+      });
+      gallerySwiper.on('progress', ensureThreeVisibleSlides);
+      
+      // Инициализируем
+      setTimeout(ensureThreeVisibleSlides, 500);
+    }
+    
+    // Обновляем настройки при изменении размера окна
+    let resizeTimer;
+    window.addEventListener('resize', function() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function() {
+        gallerySwiper.update();
+      }, 250);
+    });
+    
+    console.log('3D галерея Swiper инициализирована! 🎨');
+  } else {
+    console.warn('Swiper библиотека не загружена');
+  }
+  
   // Интерактивное свечение карточек услуг от курсора
   const serviceCards = document.querySelectorAll('.service-card');
   serviceCards.forEach(card => {
