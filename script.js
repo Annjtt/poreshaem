@@ -434,13 +434,13 @@ document.addEventListener('DOMContentLoaded', function() {
         320: {
           effect: 'slide',
           slidesPerView: 1,
-          spaceBetween: 0,
+          spaceBetween: 20,
           coverflowEffect: {},
         },
         768: {
           effect: 'coverflow',
           slidesPerView: 'auto',
-          spaceBetween: 0,
+          spaceBetween: 20,
           coverflowEffect: {
             rotate: 50,
             stretch: 0,
