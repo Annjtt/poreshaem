@@ -3793,14 +3793,10 @@ textarea:focus {
   
   .gallery-button-next,
   .gallery-button-prev {
-    width: 35px;
-    height: 35px;
-    margin-top: -17.5px;
-  }
-  
-  .gallery-button-next:after,
-  .gallery-button-prev:after {
-    font-size: 14px;
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
   }
   
   .gallery-pagination .swiper-pagination-bullet {
@@ -3949,14 +3945,10 @@ textarea:focus {
   
   .gallery-button-next,
   .gallery-button-prev {
-    width: 35px;
-    height: 35px;
-    margin-top: -17.5px;
-  }
-  
-  .gallery-button-next:after,
-  .gallery-button-prev:after {
-    font-size: 14px;
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
   }
   
   .gallery-pagination .swiper-pagination-bullet {
@@ -4078,14 +4070,10 @@ textarea:focus {
   
   .gallery-button-next,
   .gallery-button-prev {
-    width: 35px;
-    height: 35px;
-    margin-top: -17.5px;
-  }
-  
-  .gallery-button-next:after,
-  .gallery-button-prev:after {
-    font-size: 14px;
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
   }
   
   .gallery-pagination .swiper-pagination-bullet {
