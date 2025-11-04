@@ -3725,14 +3725,14 @@ textarea:focus {
   }
   
   .gallery-swiper[data-effect="slide"] .swiper-slide:not(.swiper-slide-active) {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
   }
   
   .gallery-swiper[data-effect="slide"] .swiper-slide-active {
-    opacity: 1;
-    visibility: visible;
+    opacity: 1 !important;
+    visibility: visible !important;
   }
   
   .gallery-button-next,
@@ -3789,29 +3789,65 @@ textarea:focus {
     margin-bottom: 30px;
   }
   
+  .gallery-wrapper {
+    padding: 15px 0;
+    margin: 0;
+  }
+  
   .gallery-swiper {
     height: auto;
-    min-height: 350px;
-    padding-bottom: 40px;
+    min-height: 380px;
+    padding-bottom: 50px;
+    overflow: hidden;
+  }
+  
+  .gallery-swiper .swiper-wrapper {
+    align-items: center;
+  }
+  
+  /* Отключаем coverflow эффект на мобильных */
+  .gallery-swiper[data-effect="coverflow"] .swiper-slide {
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
   }
   
   .gallery-swiper .swiper-slide {
-    width: 90% !important;
+    width: 100% !important;
     height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    transform: none !important;
   }
   
   .gallery-slide-content {
     width: 100%;
     height: auto;
     max-width: 100%;
+    margin: 0;
   }
   
   .gallery-slide-content img {
     width: 100%;
     height: auto;
     max-width: 100%;
-    max-height: 55vh;
+    max-height: 50vh;
     object-fit: contain;
+    display: block;
+  }
+  
+  /* Скрываем неактивные слайды на мобильных */
+  .gallery-swiper[data-effect="slide"] .swiper-slide:not(.swiper-slide-active) {
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+  }
+  
+  .gallery-swiper[data-effect="slide"] .swiper-slide-active {
+    opacity: 1 !important;
+    visibility: visible !important;
   }
   
   .gallery-button-next,
@@ -3824,6 +3860,12 @@ textarea:focus {
   .gallery-button-next:after,
   .gallery-button-prev:after {
     font-size: 14px;
+  }
+  
+  .gallery-pagination .swiper-pagination-bullet {
+    width: 9px;
+    height: 9px;
+    margin: 0 3px;
   }
 }
 
