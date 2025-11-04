@@ -412,7 +412,7 @@ document.addEventListener('DOMContentLoaded', function() {
       watchSlidesProgress: true,
       watchSlidesVisibility: true,
       autoplay: {
-        delay: 4000,
+        delay: 5000,
         disableOnInteraction: false,
         pauseOnMouseEnter: true,
       },
@@ -428,8 +428,11 @@ document.addEventListener('DOMContentLoaded', function() {
           return '<span class="' + className + '"></span>';
         },
       },
-      loopAdditionalSlides: 2,
+      // Автоматическая настройка loop для любого количества слайдов
+      loopAdditionalSlides: 5,
       loopPreventsSliding: false,
+      touchRatio: 1,
+      threshold: 5,
       keyboard: {
         enabled: true,
         onlyInViewport: true,
@@ -440,12 +443,16 @@ document.addEventListener('DOMContentLoaded', function() {
           effect: 'slide',
           slidesPerView: 1,
           spaceBetween: 20,
+          loop: true,
+          loopAdditionalSlides: 5,
           coverflowEffect: {},
         },
         768: {
           effect: 'coverflow',
           slidesPerView: 'auto',
           spaceBetween: 20,
+          loop: true,
+          loopAdditionalSlides: 5,
           coverflowEffect: {
             rotate: 50,
             stretch: 0,
@@ -541,14 +548,29 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       };
       
-      // Исправляем клики по пагинации для работы с loop режимом
-      const paginationBullets = document.querySelectorAll('.gallery-pagination .swiper-pagination-bullet');
-      paginationBullets.forEach((bullet, index) => {
-        bullet.addEventListener('click', function() {
-          // Используем slideToLoop для правильной работы с loop режимом
-          gallerySwiper.slideToLoop(index);
+      // Функция для обновления обработчиков пагинации (работает с любым количеством слайдов)
+      const updatePaginationHandlers = () => {
+        const paginationBullets = document.querySelectorAll('.gallery-pagination .swiper-pagination-bullet');
+        paginationBullets.forEach((bullet, index) => {
+          // Удаляем старые обработчики
+          const newBullet = bullet.cloneNode(true);
+          bullet.parentNode.replaceChild(newBullet, bullet);
+          
+          // Добавляем новый обработчик с slideToLoop для бесконечной прокрутки
+          newBullet.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            gallerySwiper.slideToLoop(index);
+          });
         });
-      });
+      };
+      
+      // Обновляем обработчики пагинации после инициализации
+      gallerySwiper.on('init', updatePaginationHandlers);
+      gallerySwiper.on('paginationUpdate', updatePaginationHandlers);
+      
+      // Также обновляем после небольшой задержки на случай, если пагинация создается асинхронно
+      setTimeout(updatePaginationHandlers, 300);
       
       // Обновляем видимость при переключении слайдов
       gallerySwiper.on('slideChange', () => {
