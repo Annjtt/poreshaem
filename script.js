@@ -424,7 +424,12 @@ document.addEventListener('DOMContentLoaded', function() {
         el: '.gallery-pagination',
         clickable: true,
         dynamicBullets: false,
+        renderBullet: function (index, className) {
+          return '<span class="' + className + '"></span>';
+        },
       },
+      loopAdditionalSlides: 2,
+      loopPreventsSliding: false,
       keyboard: {
         enabled: true,
         onlyInViewport: true,
@@ -521,28 +526,60 @@ document.addEventListener('DOMContentLoaded', function() {
         });
       };
       
+      // Функция для синхронизации пагинации с реальным индексом (исправляет баг с loop)
+      const syncPagination = () => {
+        const realIndex = gallerySwiper.realIndex;
+        const paginationBullets = document.querySelectorAll('.gallery-pagination .swiper-pagination-bullet');
+        
+        if (paginationBullets.length > 0 && realIndex < paginationBullets.length) {
+          paginationBullets.forEach((bullet, index) => {
+            bullet.classList.remove('swiper-pagination-bullet-active');
+            if (index === realIndex) {
+              bullet.classList.add('swiper-pagination-bullet-active');
+            }
+          });
+        }
+      };
+      
+      // Исправляем клики по пагинации для работы с loop режимом
+      const paginationBullets = document.querySelectorAll('.gallery-pagination .swiper-pagination-bullet');
+      paginationBullets.forEach((bullet, index) => {
+        bullet.addEventListener('click', function() {
+          // Используем slideToLoop для правильной работы с loop режимом
+          gallerySwiper.slideToLoop(index);
+        });
+      });
+      
       // Обновляем видимость при переключении слайдов
       gallerySwiper.on('slideChange', () => {
         setTimeout(ensureThreeVisibleSlides, 200);
+        syncPagination(); // Синхронизируем пагинацию
       });
-      gallerySwiper.on('transitionEnd', ensureThreeVisibleSlides);
+      gallerySwiper.on('transitionEnd', () => {
+        ensureThreeVisibleSlides();
+        syncPagination(); // Синхронизируем пагинацию после завершения анимации
+      });
       gallerySwiper.on('setTranslate', () => {
         requestAnimationFrame(ensureThreeVisibleSlides);
       });
       gallerySwiper.on('progress', ensureThreeVisibleSlides);
       
       // Инициализируем
-      setTimeout(ensureThreeVisibleSlides, 500);
+      setTimeout(() => {
+        ensureThreeVisibleSlides();
+        syncPagination(); // Синхронизируем пагинацию при инициализации
+      }, 500);
+      
+      // Обновляем настройки при изменении размера окна
+      let resizeTimer;
+      window.addEventListener('resize', function() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function() {
+          gallerySwiper.update();
+          syncPagination(); // Синхронизируем пагинацию после обновления
+        }, 250);
+      });
     }
-    
-    // Обновляем настройки при изменении размера окна
-    let resizeTimer;
-    window.addEventListener('resize', function() {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(function() {
-        gallerySwiper.update();
-      }, 250);
-    });
     
     console.log('3D галерея Swiper инициализирована! 🎨');
   } else {
