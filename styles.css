@@ -3627,6 +3627,49 @@ textarea:focus {
   backdrop-filter: blur(1px);
 }
 
+.gallery-slide-text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: clamp(15px, 3vw, 25px);
+  padding-bottom: 20px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(6px, 1.5vw, 8px);
+}
+
+.gallery-teacher-name {
+  font-size: clamp(1rem, 3.5vw, 2rem);
+  font-weight: 650;
+  color: var(--text);
+  margin: 0;
+  line-height: 1.1;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  letter-spacing: 0.5px;
+  margin-bottom: 20px;
+}
+
+.gallery-teacher-experience {
+  font-size: clamp(0.85rem, 2vw, 1rem);
+  font-weight: 500;
+  color: var(--accent);
+  margin: 0;
+  line-height: 1.4;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+.gallery-teacher-specialization {
+  font-size: clamp(0.75rem, 1.8vw, 0.9rem);
+  font-weight: 400;
+  color: var(--text);
+  margin: 0;
+  line-height: 1.4;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+  opacity: 0.95;
+}
+
 /* Кнопки навигации галереи */
 .gallery-button-next,
 .gallery-button-prev {
