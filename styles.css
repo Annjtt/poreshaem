@@ -1245,6 +1245,7 @@ p {
 .gallery-slide-content .service-age {
   margin-top: 0.8rem;
   z-index: 3;
+  font-size: 0.8rem;
 }
 
 .service-icon {
