@@ -1241,6 +1241,12 @@ p {
   filter: brightness(0.9);
 }
 
+/* Плашка на карточке галереи поверх фото и затемнения */
+.gallery-slide-content .service-age {
+  margin-top: 0.8rem;
+  z-index: 3;
+}
+
 .service-icon {
   width: 64px;
   height: 64px;
