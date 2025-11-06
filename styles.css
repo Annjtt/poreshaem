@@ -1940,6 +1940,7 @@ p {
     top: 0;
     right: 0;
     width: 320px;
+    max-width: 100vw;
     height: 100vh;
     background: linear-gradient(135deg, rgba(78, 103, 23, 0.98) 0%, rgba(90, 122, 30, 0.95) 100%);
     backdrop-filter: blur(20px);
@@ -1951,6 +1952,8 @@ p {
     visibility: hidden;
     z-index: 1000;
     overflow-y: auto;
+    overflow-x: hidden;
+    box-sizing: border-box;
     box-shadow: -10px 0 30px rgba(0, 0, 0, 0.3);
     border-left: 1px solid rgba(248, 200, 33, 0.2);
   }
@@ -2011,13 +2014,19 @@ p {
     margin-bottom: 0.1rem;
     border-radius: 12px;
     min-width: 180px;
+    max-width: 200px;
+    width: 100%;
+    box-sizing: border-box;
     position: relative;
     transition: all 0.3s ease;
     font-weight: 600;
     letter-spacing: 0.5px;
     color: var(--text);
     background-color: var(--card-bg);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2) !important;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1) !important;
+    overflow-x: hidden;
+    word-wrap: break-word;
+    white-space: normal;
   }
 
   .nav-menu .nav-link::after {
