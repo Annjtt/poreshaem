@@ -396,6 +396,8 @@ document.addEventListener('DOMContentLoaded', function() {
   if (typeof Swiper !== 'undefined') {
     const gallerySwiper = new Swiper('#gallerySwiper', {
       loop: true,
+      initialSlide: 0,
+      loopedSlides: 10,
       speed: 800,
       grabCursor: true,
       centeredSlides: true,
@@ -429,7 +431,7 @@ document.addEventListener('DOMContentLoaded', function() {
         },
       },
       // Автоматическая настройка loop для любого количества слайдов
-      loopAdditionalSlides: 5,
+      loopAdditionalSlides: 10,
       loopPreventsSliding: false,
       touchRatio: 1,
       threshold: 5,
@@ -444,7 +446,7 @@ document.addEventListener('DOMContentLoaded', function() {
           slidesPerView: 1,
           spaceBetween: 20,
           loop: true,
-          loopAdditionalSlides: 5,
+          loopAdditionalSlides: 10,
           coverflowEffect: {},
         },
         768: {
@@ -452,7 +454,7 @@ document.addEventListener('DOMContentLoaded', function() {
           slidesPerView: 'auto',
           spaceBetween: 20,
           loop: true,
-          loopAdditionalSlides: 5,
+          loopAdditionalSlides: 10,
           coverflowEffect: {
             rotate: 50,
             stretch: 0,
@@ -566,7 +568,11 @@ document.addEventListener('DOMContentLoaded', function() {
       };
       
       // Обновляем обработчики пагинации после инициализации
-      gallerySwiper.on('init', updatePaginationHandlers);
+      gallerySwiper.on('init', () => {
+        updatePaginationHandlers();
+        // Гарантируем старт с первого реального слайда
+        gallerySwiper.slideToLoop(0, 0, false);
+      });
       gallerySwiper.on('paginationUpdate', updatePaginationHandlers);
       
       // Также обновляем после небольшой задержки на случай, если пагинация создается асинхронно

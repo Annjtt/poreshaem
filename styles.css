@@ -3680,7 +3680,7 @@ textarea:focus {
 }
 
 .gallery-teacher-specialization {
-  font-size: clamp(0.85rem, 1.4vw, 1rem);
+  font-size: clamp(0.75rem, 1.4vw, 0.9rem);
   font-weight: 400;
   color: var(--text);
   margin: 0;
