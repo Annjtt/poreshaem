@@ -614,6 +614,251 @@ document.addEventListener('DOMContentLoaded', function() {
     console.warn('Swiper библиотека не загружена');
   }
   
+  // Инициализация Swiper для отзывов
+  if (typeof Swiper !== 'undefined') {
+    const reviewsSwiper = new Swiper('#reviewsSwiper', {
+      loop: true,
+      initialSlide: 0,
+      loopedSlides: 8,
+      speed: 800,
+      grabCursor: true,
+      centeredSlides: true,
+      effect: 'coverflow',
+      slidesPerView: 'auto',
+      spaceBetween: 0,
+      coverflowEffect: {
+        rotate: 50,
+        stretch: 0,
+        depth: 100,
+        modifier: 1,
+        slideShadows: true,
+      },
+      watchSlidesProgress: true,
+      watchSlidesVisibility: true,
+      autoplay: {
+        delay: 8000,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true,
+      },
+      navigation: {
+        nextEl: '.reviews-button-next',
+        prevEl: '.reviews-button-prev',
+      },
+      pagination: {
+        el: '.reviews-pagination',
+        clickable: true,
+        dynamicBullets: false,
+        renderBullet: function (index, className) {
+          return '<span class="' + className + '"></span>';
+        },
+      },
+      loopAdditionalSlides: 8,
+      loopPreventsSliding: false,
+      touchRatio: 1,
+      threshold: 5,
+      keyboard: {
+        enabled: true,
+        onlyInViewport: true,
+      },
+      // Адаптивность
+      breakpoints: {
+        320: {
+          effect: 'slide',
+          slidesPerView: 1,
+          spaceBetween: 20,
+          loop: true,
+          loopedSlides: 8,
+          loopAdditionalSlides: 2,
+          coverflowEffect: {},
+        },
+        768: {
+          effect: 'coverflow',
+          slidesPerView: 'auto',
+          spaceBetween: 20,
+          loop: true,
+          loopedSlides: 8,
+          loopAdditionalSlides: 8,
+          coverflowEffect: {
+            rotate: 50,
+            stretch: 0,
+            depth: 100,
+            modifier: 1,
+            slideShadows: true,
+          },
+        },
+      },
+    });
+    
+    // Устанавливаем data-атрибут для CSS селекторов
+    const reviewsSwiperEl = document.getElementById('reviewsSwiper');
+    if (reviewsSwiperEl) {
+      const updateReviewsEffectAttribute = () => {
+        const currentEffect = reviewsSwiper.params.effect;
+        reviewsSwiperEl.setAttribute('data-effect', currentEffect || 'coverflow');
+      };
+      
+      // Устанавливаем начальный атрибут
+      const isMobile = window.innerWidth < 768;
+      reviewsSwiperEl.setAttribute('data-effect', isMobile ? 'slide' : 'coverflow');
+      
+      // Обновляем атрибут при изменении эффекта
+      reviewsSwiper.on('setTransition', updateReviewsEffectAttribute);
+      
+      // Функция для обеспечения видимости 3 слайдов (только для coverflow)
+      const ensureThreeVisibleReviews = () => {
+        if (reviewsSwiper.params.effect !== 'coverflow') return;
+        
+        const slides = Array.from(reviewsSwiperEl.querySelectorAll('.swiper-slide'));
+        const activeSlide = reviewsSwiperEl.querySelector('.swiper-slide-active');
+        
+        if (!activeSlide || slides.length === 0) return;
+        
+        const activeIndex = slides.indexOf(activeSlide);
+        
+        slides.forEach((slide, index) => {
+          const hasActive = slide.classList.contains('swiper-slide-active');
+          const hasPrev = slide.classList.contains('swiper-slide-active-prev') || 
+                         slide.classList.contains('swiper-slide-prev');
+          const hasNext = slide.classList.contains('swiper-slide-active-next') || 
+                         slide.classList.contains('swiper-slide-next');
+          
+          let distance = Math.abs(index - activeIndex);
+          if (reviewsSwiper.params.loop && slides.length > 0) {
+            distance = Math.min(distance, slides.length - distance);
+          }
+          
+          const isVisible = hasActive || hasPrev || hasNext || distance <= 1;
+          
+          if (isVisible) {
+            slide.style.opacity = '';
+            slide.style.visibility = '';
+            slide.style.pointerEvents = '';
+            slide.style.display = '';
+          } else {
+            slide.style.opacity = '0';
+            slide.style.visibility = 'hidden';
+            slide.style.pointerEvents = 'none';
+          }
+        });
+      };
+      
+      // Функция для синхронизации пагинации
+      const syncReviewsPagination = () => {
+        if (!reviewsSwiper || !reviewsSwiper.initialized) return;
+        
+        const realIndex = reviewsSwiper.realIndex;
+        const paginationBullets = document.querySelectorAll('.reviews-pagination .swiper-pagination-bullet');
+        
+        if (paginationBullets.length > 0 && realIndex >= 0 && realIndex < paginationBullets.length) {
+          paginationBullets.forEach((bullet, index) => {
+            bullet.classList.remove('swiper-pagination-bullet-active');
+            if (index === realIndex) {
+              bullet.classList.add('swiper-pagination-bullet-active');
+            }
+          });
+        }
+      };
+      
+      // Функция для обновления обработчиков пагинации
+      const updateReviewsPaginationHandlers = () => {
+        const paginationBullets = document.querySelectorAll('.reviews-pagination .swiper-pagination-bullet');
+        paginationBullets.forEach((bullet, index) => {
+          const newBullet = bullet.cloneNode(true);
+          bullet.parentNode.replaceChild(newBullet, bullet);
+          
+          newBullet.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            reviewsSwiper.slideToLoop(index);
+          });
+        });
+      };
+      
+      let isReviewsInitialized = false;
+      let isReviewsTransitioning = false;
+      
+      // Обновляем обработчики пагинации после инициализации
+      reviewsSwiper.on('init', () => {
+        updateReviewsPaginationHandlers();
+        isReviewsInitialized = true;
+      });
+      reviewsSwiper.on('paginationUpdate', updateReviewsPaginationHandlers);
+      
+      setTimeout(() => {
+        if (isReviewsInitialized) {
+          updateReviewsPaginationHandlers();
+        }
+      }, 300);
+      
+      // Обработка loopFix
+      reviewsSwiper.on('loopFix', () => {
+        setTimeout(() => {
+          syncReviewsPagination();
+        }, 100);
+      });
+      
+      // Обновляем видимость при переключении слайдов
+      reviewsSwiper.on('slideChange', () => {
+        isReviewsTransitioning = true;
+        syncReviewsPagination();
+        setTimeout(ensureThreeVisibleReviews, 200);
+      });
+      
+      reviewsSwiper.on('slideChangeTransitionEnd', () => {
+        isReviewsTransitioning = false;
+        ensureThreeVisibleReviews();
+        syncReviewsPagination();
+      });
+      
+      reviewsSwiper.on('transitionEnd', () => {
+        if (!isReviewsTransitioning) {
+          ensureThreeVisibleReviews();
+          syncReviewsPagination();
+        }
+      });
+      
+      reviewsSwiper.on('setTranslate', () => {
+        if (!isReviewsTransitioning) {
+          requestAnimationFrame(ensureThreeVisibleReviews);
+        }
+      });
+      
+      reviewsSwiper.on('progress', () => {
+        if (!isReviewsTransitioning) {
+          ensureThreeVisibleReviews();
+        }
+      });
+      
+      // Инициализируем
+      setTimeout(() => {
+        if (isReviewsInitialized) {
+          ensureThreeVisibleReviews();
+          syncReviewsPagination();
+        }
+      }, 500);
+      
+      // Обновляем настройки при изменении размера окна
+      let reviewsResizeTimer;
+      let lastReviewsWindowWidth = window.innerWidth;
+      window.addEventListener('resize', function() {
+        clearTimeout(reviewsResizeTimer);
+        reviewsResizeTimer = setTimeout(function() {
+          const currentWidth = window.innerWidth;
+          const wasMobile = lastReviewsWindowWidth < 768;
+          const isMobile = currentWidth < 768;
+          
+          if (wasMobile !== isMobile || Math.abs(currentWidth - lastReviewsWindowWidth) > 50) {
+            reviewsSwiper.update();
+            syncReviewsPagination();
+            lastReviewsWindowWidth = currentWidth;
+          }
+        }, 250);
+      });
+    }
+    
+    console.log('Swiper для отзывов инициализирован! ⭐');
+  }
+  
   // Интерактивное свечение карточек услуг от курсора
   const serviceCards = document.querySelectorAll('.service-card');
   serviceCards.forEach(card => {
