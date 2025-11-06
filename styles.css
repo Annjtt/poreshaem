@@ -1994,6 +1994,10 @@ p {
     transition-delay: 0.30s;
   }
   
+  .nav-menu.active .nav-link:nth-child(6) {
+    transition-delay: 0.35s;
+  }
+  
   .hamburger {
     display: flex;
   }
@@ -2001,15 +2005,19 @@ p {
   /* Улучшения для мобильного меню */
   .nav-menu .nav-link {
     font-size: 1.3rem;
-    padding: 1.2rem 1rem;
-    text-align: left;
-    border-bottom: 1px solid rgba(248, 200, 33, 0.1);
-    margin-bottom: 0.8rem;
+    padding: 0.9rem 1rem;
+    text-align: center;
+    border-bottom: 2px solid var(--accent) !important;
+    margin-bottom: 0.1rem;
     border-radius: 12px;
+    min-width: 180px;
     position: relative;
     transition: all 0.3s ease;
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: 0.5px;
+    color: var(--text);
+    background-color: var(--card-bg);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2) !important;
   }
 
   .nav-menu .nav-link::after {
@@ -2664,6 +2672,12 @@ textarea:focus {
   .nav-menu .nav-link {
     font-size: 1.1rem;
     padding: 1rem 0.8rem;
+    border-bottom: 2px solid var(--accent) !important;
+    min-width: 180px;
+    text-align: center;
+    color: var(--text);
+    font-weight: 650;
+    background-color: var(--card-bg);
   }
   
   .nav-menu .cta-button {
