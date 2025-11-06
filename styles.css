@@ -2012,7 +2012,7 @@ p {
   /* Улучшения для мобильного меню */
   .nav-menu .nav-link {
     font-size: 1.3rem;
-    padding: 0.9rem 1rem;
+    padding: 0.5rem 0;
     text-align: center;
     border-bottom: 2px solid var(--accent) !important;
     margin-bottom: 0.1rem;
@@ -2028,7 +2028,6 @@ p {
     color: var(--text);
     background-color: var(--card-bg);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1) !important;
-    overflow-x: hidden;
     word-wrap: break-word;
     white-space: normal;
   }
@@ -2684,9 +2683,10 @@ textarea:focus {
   
   .nav-menu .nav-link {
     font-size: 1.1rem;
-    padding: 1rem 0.8rem;
+    padding: 0.5rem 0;
     border-bottom: 2px solid var(--accent) !important;
     min-width: 180px;
+    justify-items: center;
     text-align: center;
     color: var(--text);
     font-weight: 650;
