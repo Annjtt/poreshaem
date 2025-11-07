@@ -3663,7 +3663,10 @@ textarea:focus {
 
 /* Подложка чуть выше на планшетах/мобилках, чтобы текст поместился */
 @media (max-width: 991px) {
-  .gallery-slide-content::after { height: 48%; }
+  .gallery-slide-content::after { height: 35%; }
+}
+@media (max-width: 768px) {
+  .gallery-slide-content::after { height: 30%; }
 }
 @media (max-width: 575px) {
   .gallery-slide-content::after { height: 33%; }
