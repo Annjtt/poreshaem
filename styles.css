@@ -1071,7 +1071,7 @@ p {
 .advantages-content {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 .advantage-item {
@@ -1081,8 +1081,7 @@ p {
   padding: 1.5rem;
   background: var(--card-bg);
   backdrop-filter: blur(10px);
-  border-radius: 16px;
-  border-left: 4px solid var(--accent);
+  border-radius: 18px;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
@@ -1107,7 +1106,6 @@ p {
   transform: translateY(-8px) scale(1.02);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2),
               0 0 30px rgba(248, 200, 33, 0.1);
-  border-color: rgba(248, 200, 33, 0.4)
 }
 
 .advantage-number {
@@ -2776,7 +2774,7 @@ textarea:focus {
   }
   
   .advantages-content {
-    gap: 1rem;
+    gap: 1.3rem;
   }
   
   .advantage-item {
@@ -2785,8 +2783,8 @@ textarea:focus {
   }
   
   .advantage-number {
-    width: 35px;
-    height: 35px;
+    width: 40px;
+    height: 40px;
     font-size: 1.2rem;
   }
   
