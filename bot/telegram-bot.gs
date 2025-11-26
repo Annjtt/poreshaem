@@ -51,17 +51,38 @@ function doPost(e) {
       });
     }
 
+    // Красивое оформление сообщения
+    var now = new Date();
+    var formattedTime = Utilities.formatDate(now, 'Asia/Vladivostok', 'dd.MM.yyyy HH:mm');
+
+    // Делаем телефон кликабельным (tel:+7...) в Telegram
+    var rawPhoneDigits = phone.replace(/\D/g, '');
+    if (rawPhoneDigits.length > 0) {
+      if (rawPhoneDigits.charAt(0) === '8') {
+        rawPhoneDigits = '7' + rawPhoneDigits.substring(1);
+      } else if (rawPhoneDigits.charAt(0) !== '7') {
+        rawPhoneDigits = '7' + rawPhoneDigits;
+      }
+    }
+    var telHref = rawPhoneDigits ? '+'.concat(rawPhoneDigits) : escapeHtml_(phone);
+    var phoneDisplay = escapeHtml_(phone);
+
     var textLines = [
-      '📩 <b>Новая заявка с сайта</b>',
-      '',
-      '<b>Имя:</b> ' + escapeHtml_(name),
-      '<b>Телефон:</b> ' + escapeHtml_(phone),
-      '<b>Возраст ребёнка:</b> ' + escapeHtml_(age)
+      '✨ <b>Новая заявка с сайта «ПОРЕШАЕМ»</b>',
+      '━━━━━━━━━━━━━━━━━━━━',
+      '👤 <b>Родитель:</b> ' + escapeHtml_(name),
+      '📞 <b>Телефон:</b> <a href="tel:' + telHref + '">' + phoneDisplay + '</a>',
+      '👶 <b>Возраст ребёнка:</b> ' + escapeHtml_(age)
     ];
 
     if (message) {
-      textLines.push('<b>Комментарий:</b> ' + escapeHtml_(message));
+      textLines.push('');
+      textLines.push('📝 <b>Комментарий:</b>');
+      textLines.push(escapeHtml_(message));
     }
+
+    textLines.push('');
+    textLines.push('⏰ <b>Время заявки:</b> ' + formattedTime + ' (Владивосток)');
 
     var text = textLines.join('\n');
 
