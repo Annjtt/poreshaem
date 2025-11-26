@@ -2982,7 +2982,6 @@ textarea:focus {
   transition: var(--transition);
   position: relative;
   overflow: hidden;
-  border-bottom: 3px solid var(--accent);
 }
 
 .policy-card::before {
