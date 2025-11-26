@@ -55,7 +55,7 @@ function doPost(e) {
     var now = new Date();
     var formattedTime = Utilities.formatDate(now, 'Asia/Vladivostok', 'dd.MM.yyyy HH:mm');
 
-    // Делаем телефон кликабельным (tel:+7...) в Telegram
+    // Нормализуем телефон: только цифры, формат +7XXXXXXXXXX (без пробелов и скобок)
     var rawPhoneDigits = phone.replace(/\D/g, '');
     if (rawPhoneDigits.length > 0) {
       if (rawPhoneDigits.charAt(0) === '8') {
@@ -64,25 +64,27 @@ function doPost(e) {
         rawPhoneDigits = '7' + rawPhoneDigits;
       }
     }
-    var telHref = rawPhoneDigits ? '+'.concat(rawPhoneDigits) : escapeHtml_(phone);
-    var phoneDisplay = escapeHtml_(phone);
+    var normalizedPhone = rawPhoneDigits ? '+'.concat(rawPhoneDigits) : phone.replace(/[()\s-]/g, '');
+    var phoneDisplay = escapeHtml_(normalizedPhone || phone);
 
     var textLines = [
-      '✨ <b>Новая заявка с сайта «ПОРЕШАЕМ»</b>',
-      '━━━━━━━━━━━━━━━━━━━━',
-      '👤 <b>Родитель:</b> ' + escapeHtml_(name),
-      '📞 <b>Телефон:</b> <a href="tel:' + telHref + '">' + phoneDisplay + '</a>',
-      '👶 <b>Возраст ребёнка:</b> ' + escapeHtml_(age)
+      '✨ <b>Новая заявка с сайта</b>',
+      '',
+      '👤 <b> Родитель:</b> ' + escapeHtml_(name),
+      '👶 <b> Возраст ребёнка:</b> ' + escapeHtml_(age),
+      '📞 <b> Телефон:</b>',
+      '<code>   ' + phoneDisplay + '</code>'
     ];
 
     if (message) {
       textLines.push('');
-      textLines.push('📝 <b>Комментарий:</b>');
+      textLines.push('📝 <b> Комментарий:</b>');
+      textLines.push('');
       textLines.push(escapeHtml_(message));
     }
 
     textLines.push('');
-    textLines.push('⏰ <b>Время заявки:</b> ' + formattedTime + ' (Владивосток)');
+    textLines.push('⏰ <b> Время заявки:</b> ' + formattedTime + ' (Владивосток)');
 
     var text = textLines.join('\n');
 
@@ -147,5 +149,3 @@ function escapeHtml_(str) {
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#039;');
 }
-
-

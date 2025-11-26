@@ -1833,7 +1833,9 @@ p {
 .footer-logo .logo {
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.9rem;
+  text-align: center;
+  color: var(--text-secondary);
 }
 
 .footer-logo-img {
@@ -1877,6 +1879,31 @@ p {
 .footer-bottom a {
   color: var(--accent);
   text-decoration: none;
+}
+
+.footer-copy {
+  margin: 0 0 0.5rem;
+}
+
+.footer-legal-entity {
+  margin: 0.25rem 0;
+  font-size: 0.82rem;
+  line-height: 1.5;
+}
+
+.footer-legal-entity span {
+  display: block;
+}
+
+.footer-legal-links {
+  margin: 0.75rem 0 0.25rem;
+}
+
+.footer-made-by {
+  margin-top: 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  opacity: 0.9;
 }
 
 /* Animations */
@@ -2947,6 +2974,7 @@ textarea:focus {
   background: linear-gradient(135deg, rgba(248, 200, 33, 0.02) 0%, transparent 50%);
   opacity: 0;
   transition: var(--transition);
+  pointer-events: none;
 }
 
 .policy-card:hover {
