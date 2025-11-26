@@ -849,6 +849,29 @@ p {
   transition: left 0.5s ease;
 }
 
+/* Локальная настройка кнопки скачивания политики (policy.html) */
+.policy-download.hero-buttons {
+  justify-content: center;
+  max-width: 420px;
+  margin: 1.5rem auto 2rem;
+  animation: none;
+  opacity: 1;
+}
+
+.policy-download .btn-modern {
+  max-width: none;
+}
+
+.policy-download .btn {
+  padding: 0.7rem 1.6rem;
+}
+
+@media (min-width: 1024px) {
+  .policy-download .btn-text {
+    white-space: nowrap;
+  }
+}
+
 .btn-primary:hover .btn-glow {
   left: 100%;
 }
