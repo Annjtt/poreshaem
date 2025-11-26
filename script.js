@@ -180,7 +180,16 @@ document.addEventListener('DOMContentLoaded', function() {
   if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
       e.preventDefault();
-      
+
+      // Простейшая защита от ботов: если honeypot-поле заполнено — не отправляем
+      const honeypotInput = contactForm.querySelector('input[name="website"]');
+      if (honeypotInput && honeypotInput.value.trim() !== '') {
+        // Тихо выходим, имитируя успешную отправку
+        showNotification('Спасибо! Мы свяжемся с вами в ближайшее время.', 'success');
+        contactForm.reset();
+        return;
+      }
+
       // Собираем данные формы
       const formData = new FormData(contactForm);
       const data = Object.fromEntries(formData);
@@ -197,18 +206,42 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
       }
       
-      // Имитация отправки
+      // Отправка данных на сервер (Google Apps Script Web App)
+      // Замените URL на ваш реальный web-app URL из Google Apps Script:
+      // Пример: const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/XXX/exec';
+      const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwDhlPMYMBAnHVow7J8UyLrJbwAJSTnFz0-cipzZPW-7haGqazbkdoCZ-MVbm7IDuuT/exec';
+
       const submitBtn = contactForm.querySelector('button[type="submit"]');
       const originalText = submitBtn.textContent;
       submitBtn.textContent = 'Отправляем...';
       submitBtn.disabled = true;
-      
-      setTimeout(() => {
-        showNotification('Спасибо! Мы свяжемся с вами в ближайшее время.', 'success');
-        contactForm.reset();
-        submitBtn.textContent = originalText;
-        submitBtn.disabled = false;
-      }, 2000);
+
+      fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        body: formData
+      })
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Сервер вернул ошибку');
+          }
+          return response.json().catch(() => ({}));
+        })
+        .then(result => {
+          if (result && result.status === 'ok') {
+            showNotification('Спасибо! Мы свяжемся с вами в ближайшее время.', 'success');
+            contactForm.reset();
+          } else {
+            const message = (result && result.message) || 'Не удалось отправить заявку. Попробуйте позже.';
+            showNotification(message, 'error');
+          }
+        })
+        .catch(() => {
+          showNotification('Не удалось отправить заявку. Проверьте подключение к интернету или попробуйте позже.', 'error');
+        })
+        .finally(() => {
+          submitBtn.textContent = originalText;
+          submitBtn.disabled = false;
+        });
     });
   }
 

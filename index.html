@@ -427,6 +427,11 @@
             <div class="form-group">
               <textarea id="message" name="message" placeholder="Расскажите о ваших целях (необязательно)" rows="3"></textarea>
             </div>
+            <!-- Honeypot-поле для защиты от ботов (пользователь его не видит и не заполняет) -->
+            <div class="form-group" style="position:absolute;left:-9999px;visibility:hidden;height:0;overflow:hidden;">
+              <label for="website">Ваш сайт (оставьте пустым)</label>
+              <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+            </div>
             <div class="form-group form-consent">
               <label class="checkbox">
                 <input type="checkbox" id="consent" name="consent" required>
