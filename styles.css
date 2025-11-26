@@ -485,7 +485,7 @@ p {
   height: 300px;
   width: 100%;
   opacity: 0;
-  margin-top: 40px;
+  margin-top: 20px;
   animation: visual-fade-in 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1s both;
 }
 
@@ -790,6 +790,7 @@ p {
 }
 
 .btn-primary {
+  display: inline-block;
   font-family: 'Comic Relief', cursive, sans-serif;
   font-weight: 600;
   background: linear-gradient(135deg, var(--accent) 0%, #e6b51e 100%);
@@ -797,6 +798,10 @@ p {
   border: none;
   box-shadow: 0 6px 20px rgba(248, 200, 33, 0.4);
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  white-space: nowrap;
+  text-align: center;
+  padding: 20px 24px;
+  letter-spacing: 0.3px;
 }
 
 .btn-primary:hover {
@@ -821,7 +826,7 @@ p {
   background: rgba(255, 255, 255, 0.2);
   border-color: rgba(255, 255, 255, 0.5);
   transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
 }
 
 .btn-icon {
@@ -1642,9 +1647,9 @@ p {
   padding: 1.5rem 1.5rem;
   background: rgba(255, 255, 255, 0.05);
   border-radius: 20px;
-  border-left: 4px solid var(--accent);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   backdrop-filter: blur(10px);
+  border-left: 4px solid var(--accent);
   position: relative;
   overflow: hidden;
   min-height: 120px;
@@ -2379,7 +2384,7 @@ p {
   }
   
   .hero-visual {
-    height: 200px;
+    height: 220px;
   }
   
   .hero-logo-svg {
@@ -2692,7 +2697,12 @@ textarea:focus {
   }
   
   .btn {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
+    padding: 1.1rem 1.2rem;
+  }
+  
+  .btn-secondary {
+    font-size: 0.9rem;
     padding: 0.7rem 1.2rem;
   }
 
