@@ -10,7 +10,7 @@
   --card-bg-blue: rgba(2, 82, 255, 0.363);
   --card-bg-perpl: rgba(162, 2, 255, 0.349);
   --card-bg-orange: rgba(255, 82, 2, 0.452);
-  --card-bg-b: rgba(0, 0, 0, 0.342);
+  --card-bg-b: rgba(0, 0, 0, 0.40);
   --card-border: rgba(248, 200, 33, 0.9);
   --black: #000000;
   --black-transparent: #00000073;
@@ -3354,10 +3354,6 @@ textarea:focus {
   background-color: var(--card-bg-perpl);
 }
 
-.audience-grid .audience-card:nth-child(4) {
-  background-image: url('asset/svg/bottom.png');
-  background-color: var(--card-bg-orange);
-}
 
 .audience-card {
   background: var(--card-bg);
@@ -3399,7 +3395,7 @@ textarea:focus {
 
 .audience-card p {
   font-size: 1.1rem;
-  color: var(--text-secondary);
+  color: var(--text);
   line-height: 1.6;
   border-radius: var(--border-radius);
   padding: 15px;
@@ -3578,8 +3574,8 @@ textarea:focus {
 }
 
 .offer-card p {
-  font-size: 1rem;
-  font-weight: 300;
+  font-size: 1.1rem;
+  font-weight: 400;
   color: var(--text);
   line-height: 1.6;
   border-radius: var(--border-radius);
@@ -3629,7 +3625,7 @@ textarea:focus {
   transition: var(--transition);
   backdrop-filter: blur(10px);
   min-height: 180px;
-  max-width: 700px;
+  max-width: 980px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -4781,7 +4777,7 @@ textarea:focus {
   }
   
   .audience-card h3 {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
   }
   
   .audience-card p {
