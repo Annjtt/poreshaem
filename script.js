@@ -424,6 +424,39 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   console.log('Сайт "Порешаем" успешно загружен! 🎉');
+
+  // Cookie banner
+  (function () {
+    const banner = document.getElementById('cookieBanner');
+    if (!banner) return;
+
+    const acceptBtn = document.getElementById('cookieAccept');
+    const storageKey = 'poreshaemCookiesAccepted';
+
+    try {
+      if (window.localStorage && localStorage.getItem(storageKey) === 'true') {
+        banner.classList.add('cookie-banner--hidden');
+        return;
+      }
+    } catch (e) {
+      // localStorage может быть недоступен в некоторых режимах браузера
+    }
+
+    function hideBanner() {
+      banner.classList.add('cookie-banner--hidden');
+      try {
+        if (window.localStorage) {
+          localStorage.setItem(storageKey, 'true');
+        }
+      } catch (e) {
+        // Игнорируем ошибки записи
+      }
+    }
+
+    if (acceptBtn) {
+      acceptBtn.addEventListener('click', hideBanner);
+    }
+  })();
   
   // Инициализация 3D галереи Swiper (как в референсе)
   if (typeof Swiper !== 'undefined') {
