@@ -432,8 +432,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const acceptBtn = document.getElementById('cookieAccept');
     const storageKey = 'poreshaemCookiesAccepted';
+    const SHOW_DELAY_MS = 5000; // показываем баннер через ~5 секунд после загрузки
 
     try {
+      // Если пользователь уже принял cookies, вообще не показываем баннер
       if (window.localStorage && localStorage.getItem(storageKey) === 'true') {
         banner.classList.add('cookie-banner--hidden');
         return;
@@ -441,6 +443,15 @@ document.addEventListener('DOMContentLoaded', function() {
     } catch (e) {
       // localStorage может быть недоступен в некоторых режимах браузера
     }
+
+    // Отложенный показ баннера после загрузки hero-секции (несколько секунд)
+    setTimeout(() => {
+      // На случай, если к этому моменту появятся другие условия для скрытия,
+      // просто проверяем, что баннер ещё существует
+      if (banner) {
+        banner.classList.remove('cookie-banner--hidden');
+      }
+    }, SHOW_DELAY_MS);
 
     function hideBanner() {
       banner.classList.add('cookie-banner--hidden');
