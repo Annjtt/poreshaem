@@ -425,6 +425,39 @@ document.addEventListener('DOMContentLoaded', function() {
 
   console.log('Сайт "Порешаем" успешно загружен! 🎉');
 
+  // Промо-кнопка алерт
+  const promoAlertButton = document.getElementById('promoAlertButton');
+  if (promoAlertButton) {
+    // Показываем кнопку с небольшой задержкой для лучшего UX
+    setTimeout(() => {
+      promoAlertButton.style.opacity = '0';
+      promoAlertButton.style.visibility = 'visible';
+      promoAlertButton.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      
+      requestAnimationFrame(() => {
+        promoAlertButton.style.opacity = '1';
+        promoAlertButton.style.transform = 'scale(1)';
+      });
+    }, 2000);
+
+    // Добавляем эффект при наведении
+    promoAlertButton.addEventListener('mouseenter', function() {
+      this.style.animation = 'none';
+      setTimeout(() => {
+        this.style.animation = 'promoAlertPulse 1.5s ease-in-out infinite';
+      }, 10);
+    });
+
+    promoAlertButton.addEventListener('mouseleave', function() {
+      this.style.animation = 'promoAlertPulse 2s ease-in-out infinite';
+    });
+
+    // Отслеживание кликов для аналитики (опционально)
+    promoAlertButton.addEventListener('click', function() {
+      console.log('Пользователь перешёл на промо-страницу');
+    });
+  }
+
   // Cookie banner
   (function () {
     const banner = document.getElementById('cookieBanner');

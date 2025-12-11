@@ -2679,6 +2679,137 @@ textarea:focus {
   transform: translateY(0);
 }
 
+/* Кнопка-алерт для промо */
+.promo-alert-button {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, var(--accent) 0%, #ffd700 100%);
+  color: var(--primary-bg);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  box-shadow: 0 4px 20px rgba(248, 200, 33, 0.4);
+  transition: var(--transition);
+  z-index: 999;
+  text-decoration: none;
+  overflow: visible;
+  animation: promoAlertPulse 2s ease-in-out infinite;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.8);
+}
+
+.promo-alert-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 25px rgba(248, 200, 33, 0.6);
+  background: linear-gradient(135deg, #ffd700 0%, var(--accent) 100%);
+}
+
+.promo-alert-button:active {
+  transform: scale(0.95);
+}
+
+.promo-alert-icon {
+  position: relative;
+  z-index: 2;
+  animation: promoAlertRing 1.5s ease-in-out infinite;
+}
+
+.promo-alert-pulse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.6;
+  animation: promoAlertPulseRing 2s ease-out infinite;
+  z-index: 1;
+}
+
+.promo-alert-badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  width: 24px;
+  height: 24px;
+  background: #ff4444;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border: 2px solid var(--primary-bg);
+  box-shadow: 0 2px 8px rgba(255, 68, 68, 0.4);
+  animation: promoAlertBadge 1s ease-in-out infinite;
+  z-index: 3;
+}
+
+@keyframes promoAlertPulse {
+  0%, 100% {
+    box-shadow: 0 4px 20px rgba(248, 200, 33, 0.4);
+  }
+  50% {
+    box-shadow: 0 4px 25px rgba(248, 200, 33, 0.6);
+  }
+}
+
+@keyframes promoAlertRing {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(-10deg);
+  }
+  20% {
+    transform: rotate(10deg);
+  }
+  30% {
+    transform: rotate(-8deg);
+  }
+  40% {
+    transform: rotate(8deg);
+  }
+  50% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes promoAlertPulseRing {
+  0% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.3);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 0;
+  }
+}
+
+@keyframes promoAlertBadge {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+}
+
 /* Специальные стили для очень маленьких экранов */
 @media (max-width: 390px) {
   .container {
@@ -2853,6 +2984,22 @@ textarea:focus {
     height: 45px;
     font-size: 1.1rem;
     z-index: 1000;
+  }
+
+  .promo-alert-button {
+    bottom: 20px;
+    left: 20px;
+    width: 55px;
+    height: 55px;
+    font-size: 1.3rem;
+  }
+
+  .promo-alert-badge {
+    width: 20px;
+    height: 20px;
+    font-size: 0.65rem;
+    top: -3px;
+    right: -3px;
   }
   
   /* Стили контактов для 480px и меньше - как для 360px */
