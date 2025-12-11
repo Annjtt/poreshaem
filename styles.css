@@ -2987,19 +2987,25 @@ textarea:focus {
   }
 
   .promo-alert-button {
-    bottom: 20px;
-    left: 20px;
-    width: 55px;
-    height: 55px;
-    font-size: 1.3rem;
+    bottom: 80px;
+    right: 20px;
+    left: auto;
+    width: 45px;
+    height: 45px;
+    font-size: 1.1rem;
   }
 
   .promo-alert-badge {
-    width: 20px;
-    height: 20px;
-    font-size: 0.65rem;
+    width: 16px;
+    height: 16px;
+    font-size: 0.55rem;
     top: -3px;
     right: -3px;
+  }
+
+  .promo-alert-pulse {
+    width: 45px;
+    height: 45px;
   }
   
   /* Стили контактов для 480px и меньше - как для 360px */
