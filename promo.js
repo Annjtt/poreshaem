@@ -39,13 +39,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Применяем анимацию к элементам
   const animatedElements = document.querySelectorAll(
-    '.promo-schedule-day, .promo-activity-item, .promo-info-item, .promo-contact-item'
+    '.promo-schedule-day, .promo-activity-item, .promo-info-item, .promo-info-box-content, .promo-contact-item'
   );
 
   animatedElements.forEach((el, index) => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(30px)';
-    el.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+    el.style.transition = `opacity 0.5s ease ${index * 0.1}s, transform 0.5s ease ${index * 0.1}s`;
     observer.observe(el);
   });
 
