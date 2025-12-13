@@ -40,6 +40,8 @@
   
   <!-- Swiper CSS -->
   <link rel="stylesheet" href="swiper-bundle.min.css">
+  <!-- Promo styles for modal card -->
+  <link rel="stylesheet" href="promo.css">
   
   <link rel="stylesheet" href="styles.css">
 </head>
@@ -680,10 +682,34 @@
     <div class="promo-alert-badge">!</div>
   </a>
 
+  <!-- Promo Modal -->
+  <div class="promo-modal" id="promoModal" aria-hidden="true">
+    <div class="promo-modal-overlay" id="promoModalOverlay"></div>
+    <div class="promo-modal-dialog promo-flip" role="dialog" aria-modal="true" aria-labelledby="promoModalTitle">
+      <button class="promo-modal-close" id="promoModalClose" title="Закрыть">×</button>
+      <div class="flip-swiper swiper-container" id="flipSwiperModal">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img src="asset/event/ngfront.png" class="flip-slide-image" alt="Новогодний лагерь — информация">
+          </div>
+          <div class="swiper-slide">
+            <img src="asset/event/ngback.png" class="flip-slide-image" alt="Новогодний лагерь — расписание">
+          </div>
+        </div>
+        <div class="swiper-button-prev flip-prev" aria-hidden="true"></div>
+        <div class="swiper-button-next flip-next" aria-hidden="true"></div>
+      </div>
+      <div class="promo-modal-actions">
+        <a href="promo.html" class="btn btn-primary" id="promoModalDetails">Подробности</a>
+      </div>
+    </div>
+  </div>
+
   <!-- Scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.min.js" 
           onerror="console.warn('AOS library failed to load from CDN, using fallback animations')"></script>
   <script src="swiper-bundle.min.js"></script>
   <script src="script.js"></script>
+  <script src="promo.js"></script>
 </body>
 </html>

@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Применяем анимацию к элементам
   const animatedElements = document.querySelectorAll(
-    '.promo-schedule-day, .promo-activity-item, .promo-info-item, .promo-info-box-content, .promo-contact-item'
+    '.promo-schedule-day, .promo-activity-item, .promo-info-item, .promo-info-box-content, .promo-contact-item, .flip-swiper, .promo-flip .swiper-button-prev, .promo-flip .swiper-button-next'
   );
 
   animatedElements.forEach((el, index) => {
@@ -119,6 +119,109 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   `;
   document.head.appendChild(style);
+
+  const pageFlipContainer = document.getElementById('flipSwiper');
+
+  function setAspectAndInitialSlide(swiper, container) {
+    const portrait = window.matchMedia('(orientation: portrait)').matches;
+    if (container) {
+      container.style.setProperty('--card-aspect', '3/4');
+    }
+    if (swiper) {
+      const targetIndex = portrait ? 0 : 1;
+      swiper.slideTo(targetIndex, 0);
+    }
+  }
+
+  let flipSwiper = null;
+  if (pageFlipContainer && window.Swiper) {
+    const prevBtn = pageFlipContainer.querySelector('.flip-prev');
+    const nextBtn = pageFlipContainer.querySelector('.flip-next');
+    flipSwiper = new Swiper(pageFlipContainer, {
+      effect: 'flip',
+      loop: false,
+      speed: 600,
+      allowTouchMove: true,
+      simulateTouch: true,
+      grabCursor: true,
+      keyboard: { enabled: true },
+      navigation: {
+        nextEl: nextBtn,
+        prevEl: prevBtn
+      }
+    });
+    setAspectAndInitialSlide(flipSwiper, pageFlipContainer);
+    window.addEventListener('orientationchange', () => setAspectAndInitialSlide(flipSwiper, pageFlipContainer));
+    window.addEventListener('resize', () => setAspectAndInitialSlide(flipSwiper, pageFlipContainer));
+
+    // no extra tilt effects
+  }
+
+  // Modal logic on main page
+  const promoAlertButton = document.getElementById('promoAlertButton');
+  const promoModal = document.getElementById('promoModal');
+  const promoModalOverlay = document.getElementById('promoModalOverlay');
+  const promoModalClose = document.getElementById('promoModalClose');
+  const promoModalDetails = document.getElementById('promoModalDetails');
+  const modalFlipContainer = document.getElementById('flipSwiperModal');
+  let modalFlipSwiper = null;
+
+  function openPromoModal(e) {
+    if (e) e.preventDefault();
+    if (!promoModal) return;
+    promoModal.classList.add('show');
+    promoModal.setAttribute('aria-hidden', 'false');
+    const scrollBarWidth = window.innerWidth - document.documentElement.clientWidth;
+    document.body.classList.add('modal-open');
+    if (scrollBarWidth > 0) {
+      document.body.style.paddingRight = `${scrollBarWidth}px`;
+    }
+
+    if (modalFlipContainer && window.Swiper) {
+      if (!modalFlipSwiper) {
+        const prevBtnM = modalFlipContainer.querySelector('.flip-prev');
+        const nextBtnM = modalFlipContainer.querySelector('.flip-next');
+        modalFlipSwiper = new Swiper(modalFlipContainer, {
+          effect: 'flip',
+          loop: false,
+          speed: 600,
+          allowTouchMove: true,
+          simulateTouch: true,
+          grabCursor: true,
+          keyboard: { enabled: true },
+          navigation: {
+            nextEl: nextBtnM,
+            prevEl: prevBtnM
+          }
+        });
+      } else {
+        modalFlipSwiper.update();
+        modalFlipSwiper.updateSize();
+      }
+      setAspectAndInitialSlide(modalFlipSwiper, modalFlipContainer);
+    }
+  }
+
+  function closePromoModal() {
+    if (!promoModal) return;
+    promoModal.classList.remove('show');
+    promoModal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('modal-open');
+    document.body.style.paddingRight = '';
+  }
+
+  if (promoAlertButton && promoModal) {
+    promoAlertButton.addEventListener('click', openPromoModal);
+  }
+  if (promoModalOverlay) {
+    promoModalOverlay.addEventListener('click', closePromoModal);
+  }
+  if (promoModalClose) {
+    promoModalClose.addEventListener('click', closePromoModal);
+  }
+  document.addEventListener('keydown', (ev) => {
+    if (ev.key === 'Escape') closePromoModal();
+  });
 
   // Обработка изменения размера окна
   let resizeTimer;

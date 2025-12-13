@@ -5183,3 +5183,23 @@ textarea:focus {
     width: 100%;
   }
 }
+/* Promo Modal */
+.promo-modal { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; z-index: 3000; }
+.promo-modal.show { display: flex; }
+.promo-modal-overlay { position: absolute; inset: 0; background: rgba(0,0,0,.3); backdrop-filter: blur(4px); }
+.promo-modal-dialog { position: relative; z-index: 1; width: min(92vw, 500px); max-height: 95vh; padding: 16px 16px 8px; border-radius: 16px; overflow: auto; display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.promo-modal-close { position: absolute; z-index: 5000; top: 6px; right: 10px; width: 36px; height: 36px; border-radius: 999px; border: none; background: rgba(0,0,0,.45); color: #fff; font-size: 22px; line-height: 36px; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.promo-modal-close:hover { background: rgba(0,0,0,.65); }
+.promo-modal-actions { margin-top: 14px; display: flex; justify-content: center; }
+.promo-modal-actions .btn { font-size: 1rem; padding: 0.8rem 1.6rem; border-radius: 12px; text-decoration: none; box-shadow: var(--shadow); color: var(--text-btn); }
+body.modal-open { overflow: hidden; }
+
+/* Ensure card uses height-based sizing inside modal to avoid clipping */
+.promo-modal .flip-swiper { width: clamp(280px, 90vw, 600px); height: auto; aspect-ratio: var(--card-aspect, 3/4); }
+
+@media (max-width: 600px) {
+  .promo-modal-dialog { width: 96vw; max-height: 98vh; padding: 12px; z-index: 2; }
+  .promo-modal .flip-swiper { width: 92vw; }
+  .promo-modal-close { top: 4px; right: 6px; z-index: 2; }
+  .promo-modal-actions .btn { width: 90%; }
+}

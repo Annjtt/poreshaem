@@ -27,6 +27,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   
   <link rel="stylesheet" href="promo.css">
+  <link rel="stylesheet" href="swiper-bundle.min.css">
 </head>
 <body>
   <!-- Header -->
@@ -47,21 +48,21 @@
 
   <!-- Падающий снег для всей страницы -->
   <div class="snow-container-full">
-    <div class="snowflake-full snowflake-f-1">❄</div>
-    <div class="snowflake-full snowflake-f-2">❄</div>
-    <div class="snowflake-full snowflake-f-3">❄</div>
-    <div class="snowflake-full snowflake-f-4">❄</div>
+    <div class="snowflake-full snowflake-f-1">*</div>
+    <div class="snowflake-full snowflake-f-2">*</div>
+    <div class="snowflake-full snowflake-f-3">*</div>
+    <div class="snowflake-full snowflake-f-4">*</div>
     <div class="snowflake-full snowflake-f-5">❄</div>
-    <div class="snowflake-full snowflake-f-6">❄</div>
+    <div class="snowflake-full snowflake-f-6">*</div>
     <div class="snowflake-full snowflake-f-7">❄</div>
     <div class="snowflake-full snowflake-f-8">❄</div>
-    <div class="snowflake-full snowflake-f-9">❄</div>
+    <div class="snowflake-full snowflake-f-9">*</div>
     <div class="snowflake-full snowflake-f-10">❄</div>
     <div class="snowflake-full snowflake-f-11">❄</div>
-    <div class="snowflake-full snowflake-f-12">❄</div>
+    <div class="snowflake-full snowflake-f-12">*</div>
     <div class="snowflake-full snowflake-f-13">❄</div>
     <div class="snowflake-full snowflake-f-14">❄</div>
-    <div class="snowflake-full snowflake-f-15">❄</div>
+    <div class="snowflake-full snowflake-f-15">*</div>
   </div>
 
   <!-- Hero Section -->
@@ -92,35 +93,35 @@
     
     <!-- Падающий снег -->
     <div class="snow-container">
-      <div class="snowflake snowflake-1">❄</div>
+      <div class="snowflake snowflake-1">*</div>
       <div class="snowflake snowflake-2">❄</div>
-      <div class="snowflake snowflake-3">❄</div>
+      <div class="snowflake snowflake-3">*</div>
       <div class="snowflake snowflake-4">❄</div>
-      <div class="snowflake snowflake-5">❄</div>
+      <div class="snowflake snowflake-5">*</div>
       <div class="snowflake snowflake-6">❄</div>
-      <div class="snowflake snowflake-7">❄</div>
+      <div class="snowflake snowflake-7">*</div>
       <div class="snowflake snowflake-8">❄</div>
       <div class="snowflake snowflake-9">❄</div>
-      <div class="snowflake snowflake-10">❄</div>
+      <div class="snowflake snowflake-10">*</div>
       <div class="snowflake snowflake-11">❄</div>
       <div class="snowflake snowflake-12">❄</div>
-      <div class="snowflake snowflake-13">❄</div>
+      <div class="snowflake snowflake-13">*</div>
       <div class="snowflake snowflake-14">❄</div>
-      <div class="snowflake snowflake-15">❄</div>
+      <div class="snowflake snowflake-15">*</div>
       <div class="snowflake snowflake-16">❄</div>
       <div class="snowflake snowflake-17">❄</div>
       <div class="snowflake snowflake-18">❄</div>
-      <div class="snowflake snowflake-19">❄</div>
+      <div class="snowflake snowflake-19">*</div>
       <div class="snowflake snowflake-20">❄</div>
-      <div class="snowflake snowflake-21">❄</div>
+      <div class="snowflake snowflake-21">*</div>
       <div class="snowflake snowflake-22">❄</div>
-      <div class="snowflake snowflake-23">❄</div>
+      <div class="snowflake snowflake-23">*</div>
       <div class="snowflake snowflake-24">❄</div>
       <div class="snowflake snowflake-25">❄</div>
-      <div class="snowflake snowflake-26">❄</div>
+      <div class="snowflake snowflake-26">*</div>
       <div class="snowflake snowflake-27">❄</div>
       <div class="snowflake snowflake-28">❄</div>
-      <div class="snowflake snowflake-29">❄</div>
+      <div class="snowflake snowflake-29">*</div>
       <div class="snowflake snowflake-30">❄</div>
     </div>
     
@@ -157,6 +158,23 @@
             <span>14:00 - 18:00</span>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="promo-flip">
+    <div class="promo-container">
+      <div class="flip-swiper swiper-container" id="flipSwiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img src="asset/event/ngfront.png" class="flip-slide-image" alt="Новогодний лагерь — информация">
+          </div>
+          <div class="swiper-slide">
+            <img src="asset/event/ngback.png" class="flip-slide-image" alt="Новогодний лагерь — расписание">
+          </div>
+        </div>
+        <div class="swiper-button-prev flip-prev" aria-hidden="true"></div>
+        <div class="swiper-button-next flip-next" aria-hidden="true"></div>
       </div>
     </div>
   </section>
@@ -351,6 +369,7 @@
     </div>
   </footer>
 
+  <script src="swiper-bundle.min.js"></script>
   <script src="promo.js"></script>
 </body>
 </html>
