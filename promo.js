@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
   animatedElements.forEach((el, index) => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(30px)';
-    el.style.transition = `opacity 0.5s ease ${index * 0.1}s, transform 0.5s ease ${index * 0.1}s`;
+    el.style.transition = `opacity 0.5s ease ${index * 0.01}s, transform 0.4s ease ${index * 0.01}s`;
     observer.observe(el);
   });
 
@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const scheduleDays = document.querySelectorAll('.promo-schedule-day');
   scheduleDays.forEach(day => {
     day.addEventListener('mouseenter', function() {
-      this.style.transform = 'translateY(-5px) scale(1.02)';
+      this.style.transform = 'translateY(0)';
     });
     
     day.addEventListener('mouseleave', function() {

@@ -530,7 +530,7 @@ body::before {
 
 .promo-activity-item:hover {
   background: rgba(255, 255, 255, 0.1);
-  transform: translateX(5px);
+  transform: translateX(5px) !important; 
 }
 
 .promo-activity-item i {
@@ -614,13 +614,13 @@ body::before {
   background: linear-gradient(135deg, rgba(248, 200, 33, 0.1) 0%, transparent 100%);
   opacity: 0;
   transition: var(--transition);
+  animation: twinkle 4s infinite;
 }
 
 .promo-schedule-day:hover {
   background: rgba(255, 255, 255, 0.1);
   border-color: var(--accent);
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .promo-schedule-day:hover::before {
