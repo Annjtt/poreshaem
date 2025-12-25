@@ -5178,9 +5178,6 @@ textarea:focus {
   background: #ffd700;
   color: #1a1917;
   box-shadow: 0 3px 8px rgba(248, 200, 33, 0.30);
-  border: 1px solid #ffc300;
-  outline: none;
-  transition: background 0.2s, color 0.2s, box-shadow 0.2s, border 0.2s;
 }
 
 @media (max-width: 768px) {
