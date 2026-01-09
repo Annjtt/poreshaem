@@ -2033,6 +2033,8 @@ p {
     box-sizing: border-box;
     box-shadow: -10px 0 30px rgba(0, 0, 0, 0.3);
     border-left: 1px solid rgba(248, 200, 33, 0.2);
+    border-bottom-left-radius: 30px;
+    border-top-left-radius: 30px;
   }
   
   .nav-menu.active {
@@ -5303,4 +5305,5 @@ body.modal-open {
   .promo-modal-actions .btn {
     width: 90%;
   }
+
 }
