@@ -2728,9 +2728,28 @@ textarea:focus {
 }
 
 .promo-alert-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
   z-index: 2;
   animation: promoAlertRing 1.5s ease-in-out infinite;
+}
+
+.fa-telegram {
+  font-size: 3.4rem;
+}
+
+@media (max-width: 480px) {
+  .fa-telegram {
+    font-size: 3.3rem;
+  }
+}
+
+@media (max-width: 390px) {
+  .fa-telegram {
+    font-size: 2.4rem;
+  }
 }
 
 .promo-alert-pulse {
