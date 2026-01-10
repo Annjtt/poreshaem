@@ -1696,10 +1696,18 @@ p {
 }
 
 .contact-icon {
-  width: 70px;
-  height: 70px;
+  position: absolute;
+  overflow: visible;
+  z-index: 3;
+  top: -5px;
+  right: 1px;
+  width: 80px;
+  height: 80px;
   background: linear-gradient(135deg, var(--accent) 0%, #ffd700 100%);
-  border-radius: 18px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 50%;
+  border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2736,18 +2744,18 @@ textarea:focus {
   animation: promoAlertRing 1.5s ease-in-out infinite;
 }
 
-.fa-telegram {
+.alert-tg {
   font-size: 3.4rem;
 }
 
 @media (max-width: 480px) {
-  .fa-telegram {
+  .alert-tg {
     font-size: 3.3rem;
   }
 }
 
 @media (max-width: 390px) {
-  .fa-telegram {
+  .alert-tg {
     font-size: 2.4rem;
   }
 }
