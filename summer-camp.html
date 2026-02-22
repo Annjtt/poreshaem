@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Летний лагерь - Порешаем</title>
+  <meta name="description" content="Летний городской лагерь для детей 7-12 лет с 1 по 12 июня. Ежедневные экскурсии, мастер-классы, питание и транспорт включены!">
+  <meta name="theme-color" content="#4A90E2">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="asset/icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="asset/icon.png">
+  <link rel="apple-touch-icon" href="asset/icon.png">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Летний лагерь - Порешаем">
+  <meta property="og:description" content="Летний городской лагерь для детей 7-12 лет с 1 по 12 июня. Ежедневные экскурсии, мастер-классы, питание и транспорт включены!">
+  <meta property="og:image" content="https://xn--80ajb2agfi9d.xn--p1acf/logo.svg">
+  <meta property="og:site_name" content="Порешаем">
+  <meta property="og:locale" content="ru_RU">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Buduj+Sans:wght@400;700&family=Comic+Relief&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="summer-camp.css">
+  <link rel="stylesheet" href="swiper-bundle.min.css">
+</head>
+<body>
+  <!-- Preloader с прогресс-баром -->
+  <div class="preloader" id="preloader">
+    <div class="preloader-content">
+      <div class="preloader-logo">
+        <img src="logo.svg" alt="Порешаем" class="preloader-logo-image">
+      </div>
+      <div class="preloader-progress-wrapper">
+        <div class="preloader-progress-bar">
+          <div class="preloader-progress-fill" id="progressFill"></div>
+        </div>
+        <span class="preloader-progress-text" id="progressText">0%</span>
+      </div>
+      <p class="preloader-text" id="preloaderPhrase">Готовим летнее приключение...</p>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="promo-header">
+    <nav class="promo-nav">
+      <div class="promo-nav-container">
+        <div class="promo-logo">
+          <a href="index.html">
+            <img src="logo.svg" alt="Порешаем - Репетиторский центр" class="promo-logo-svg">
+          </a>
+        </div>
+        <a href="index.html" class="promo-back-link">
+          <i class="fas fa-arrow-left"></i> На главную
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="promo-hero">
+    <!-- Облака (5 крупных, оптимизировано) -->
+    <div class="clouds-container">
+      <div class="cloud cloud-1">☁</div>
+      <div class="cloud cloud-2">☁</div>
+      <div class="cloud cloud-3">⛅</div>
+      <div class="cloud cloud-4">☁</div>
+      <div class="cloud cloud-5">⛅</div>
+    </div>
+    
+    <!-- Солнечные блики -->
+    <div class="promo-sun-rays">
+      <div class="sun-ray sun-ray-1"></div>
+      <div class="sun-ray sun-ray-2"></div>
+      <div class="sun-ray sun-ray-3"></div>
+      <div class="sun-ray sun-ray-4"></div>
+      <div class="sun-ray sun-ray-5"></div>
+      <div class="sun-ray sun-ray-6"></div>
+      <div class="sun-ray sun-ray-7"></div>
+      <div class="sun-ray sun-ray-8"></div>
+    </div>
+    
+    <!-- Плавающие элементы (3 крупных) -->
+    <div class="floating-elements">
+      <div class="float-item float-1">🦋</div>
+      <div class="float-item float-2">🌻</div>
+      <div class="float-item float-3">🍃</div>
+    </div>
+    
+    <div class="promo-hero-content">
+      <div class="promo-logo-banner">
+        <div class="promo-logo-main">
+          <img src="logo.svg" alt="Порешаем" class="promo-logo-image">
+        </div>
+        <div class="promo-banner-ribbon summer">
+          <span class="promo-banner-text">Летний лагерь</span>
+        </div>
+        
+        <div class="promo-dates-inline">
+          <span class="promo-dates-from">1</span>
+          <span class="promo-dates-sep">–</span>
+          <span class="promo-dates-to">12</span>
+          <span class="promo-dates-month">июня</span>
+        </div>
+      </div>
+      
+      <div class="promo-info-box">
+        <div class="promo-age-badge">
+          <span class="promo-label">Возраст:</span>
+          <span class="promo-age-value">7-12 лет</span>
+        </div>
+        
+        <div class="promo-time-slots">
+          <div class="promo-time-slot">
+            <i class="fas fa-sun"></i>
+            <span>08:30 - 18:30</span>
+          </div>
+          <div class="promo-time-slot highlight">
+            <i class="fas fa-check-circle"></i>
+            <span>Полный день</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Flip Card Section -->
+  <section class="promo-flip">
+    <div class="promo-container">
+      <div class="flip-swiper swiper-container" id="flipSwiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img src="asset/event/smfront.png" class="flip-slide-image" alt="Летний лагерь — рекламный постер">
+          </div>
+          <div class="swiper-slide">
+            <img src="asset/event/smback.png" class="flip-slide-image" alt="Летний лагерь — программа смены">
+          </div>
+        </div>
+        <div class="swiper-button-prev flip-prev" aria-hidden="true"></div>
+        <div class="swiper-button-next flip-next" aria-hidden="true"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Activities Section -->
+  <section class="promo-activities">
+    <div class="promo-container">
+      <div class="promo-activities-list">
+        <div class="promo-activity-item">
+          <i class="fas fa-bus"></i>
+          <span>Ежедневные <strong>экскурсии</strong> по городу</span>
+        </div>
+        <div class="promo-activity-item highlight">
+          <i class="fas fa-palette"></i>
+          <span>Профессиональные <strong>мастер-классы</strong> каждый день</span>
+        </div>
+        <div class="promo-activity-item highlight">
+          <i class="fas fa-utensils"></i>
+          <span>Всё включено: <strong>питание, транспорт, педагоги</strong></span>
+        </div>
+        <div class="promo-activity-item">
+          <i class="fas fa-compass"></i>
+          <span>Образовательное путешествие вместо обычного дня</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Schedule Section -->
+  <section class="promo-schedule">
+    <div class="promo-container">
+      <div class="promo-schedule-header">
+        <h2 class="promo-section-title">Программа смены</h2>
+        <p class="promo-schedule-subtitle">1–12 июня 2026 • 08:30–18:30</p>
+      </div>
+      
+      <div class="promo-schedule-grid">
+        <div class="promo-schedule-day">
+          <div class="promo-day-header">
+            <span class="promo-day-name">Пн</span>
+            <span class="promo-day-date">01.06</span>
+          </div>
+          <div class="promo-day-content">
+            <div class="promo-main-activity">
+              <h3>🚗 День истории и техники</h3>
+              <p class="promo-excursion">Автомобильный музей: экскурсия + квест</p>
+            </div>
+            <div class="promo-master-class">
+              <span class="promo-master-label">Мастер-класс:</span>
+              <span class="promo-master-name">«Мини-машинка из конструктора»</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="promo-schedule-day">
+          <div class="promo-day-header">
+            <span class="promo-day-name">Вт</span>
+            <span class="promo-day-date">02.06</span>
+          </div>
+          <div class="promo-day-content">
+            <div class="promo-main-activity">
+              <h3>🏛️ Музей и творчество</h3>
+              <p class="promo-excursion">Музей Арсеньева: история Дальнего Востока</p>
+            </div>
+            <div class="promo-master-class">
+              <span class="promo-master-label">Мастер-класс:</span>
+              <span class="promo-master-name">Коллаж «История нашего города»</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="promo-schedule-day">
+          <div class="promo-day-header">
+            <span class="promo-day-name">Ср</span>
+            <span class="promo-day-date">03.06</span>
+          </div>
+          <div class="promo-day-content">
+            <div class="promo-main-activity">
+              <h3>🌊 Морские приключения</h3>
+              <p class="promo-excursion">Океанариум: морской мир и обитатели</p>
+            </div>
+            <div class="promo-master-class">
+              <span class="promo-master-label">Мастер-класс:</span>
+              <span class="promo-master-name">Лепка и роспись морских обитателей</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="promo-schedule-day">
+          <div class="promo-day-header">
+            <span class="promo-day-name">Чт</span>
+            <span class="promo-day-date">04.06</span>
+          </div>
+          <div class="promo-day-content">
+            <div class="promo-main-activity">
+              <h3>⚓ Подводный мир • ВМФ</h3>
+              <p class="promo-excursion">Музей подводной лодки С-56</p>
+            </div>
+            <div class="promo-master-class">
+              <span class="promo-master-label">Мастер-класс:</span>
+              <span class="promo-master-name">«Конструкция лодки своими руками»</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="promo-schedule-day">
+          <div class="promo-day-header">
+            <span class="promo-day-name">Пт</span>
+            <span class="promo-day-date">05.06</span>
+          </div>
+          <div class="promo-day-content">
+            <div class="promo-main-activity">
+              <h3>🌿 Природа и ботаника</h3>
+              <p class="promo-excursion">Ботанический сад</p>
+            </div>
+            <div class="promo-master-class">
+              <span class="promo-master-label">Мастер-класс:</span>
+              <span class="promo-master-name">Создание гербария</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="promo-schedule-day">
+          <div class="promo-day-header">
+            <span class="promo-day-name">Пн</span>
+            <span class="promo-day-date">08.06</span>
+          </div>
+          <div class="promo-day-content">
+            <div class="promo-main-activity">
+              <h3>🧗 Активный отдых</h3>
+              <p class="promo-excursion">GRAVITACIA | Скалодром</p>
+            </div>
+            <div class="promo-master-class">
+              <span class="promo-master-label">Мастер-класс:</span>
+              <span class="promo-master-name">Этика безопасности + мини-турнир</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="promo-schedule-day">
+          <div class="promo-day-header">
+            <span class="promo-day-name">Вт</span>
+            <span class="promo-day-date">09.06</span>
+          </div>
+          <div class="promo-day-content">
+            <div class="promo-main-activity">
+              <h3>🎭 Культурный арт-день</h3>
+              <p class="promo-excursion">Детский театр кукол</p>
+            </div>
+            <div class="promo-master-class">
+              <span class="promo-master-label">Мастер-класс:</span>
+              <span class="promo-master-name">Создание кукол для спектакля</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="promo-schedule-day">
+          <div class="promo-day-header">
+            <span class="promo-day-name">Ср</span>
+            <span class="promo-day-date">10.06</span>
+          </div>
+          <div class="promo-day-content">
+            <div class="promo-main-activity">
+              <h3>🔬 Наука и открытия</h3>
+              <p class="promo-excursion">Mozgolomka — музей загадок</p>
+            </div>
+            <div class="promo-master-class">
+              <span class="promo-master-label">Мастер-класс:</span>
+              <span class="promo-master-name">Головоломки и командные задачи</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="promo-schedule-day">
+          <div class="promo-day-header">
+            <span class="promo-day-name">Чт</span>
+            <span class="promo-day-date">11.06</span>
+          </div>
+          <div class="promo-day-content">
+            <div class="promo-main-activity">
+              <h3>🦁 Зоопарк и природа</h3>
+              <p class="promo-excursion">Садгород — контактный зоопарк</p>
+            </div>
+            <div class="promo-master-class">
+              <span class="promo-master-label">Мастер-класс:</span>
+              <span class="promo-master-name">«Наблюдение за поведением животных»</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="promo-schedule-day">
+          <div class="promo-day-header">
+            <span class="promo-day-name">Пт</span>
+            <span class="promo-day-date">12.06</span>
+          </div>
+          <div class="promo-day-content">
+            <div class="promo-main-activity">
+              <h3>🎡 Играем и отдыхаем</h3>
+              <p class="promo-excursion">Дом аттракционов «Иллюзия»</p>
+            </div>
+            <div class="promo-master-class">
+              <span class="promo-master-label">Мастер-класс:</span>
+              <span class="promo-master-name">Роспись гипсовых фигурок</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <p class="promo-schedule-note">* 6–7 июня — выходные дни</p>
+    </div>
+  </section>
+
+  <!-- Info Section -->
+  <section class="promo-info-section">
+    <div class="promo-container">
+      <div class="promo-info-box-content">
+        <div class="promo-info-item">
+          <i class="fas fa-utensils"></i>
+          <p>Полное <strong>питание</strong> включено в стоимость</p>
+        </div>
+        <div class="promo-info-item">
+          <i class="fas fa-bus-alt"></i>
+          <p><strong>Транспорт</strong> до мест экскурсий и обратно</p>
+        </div>
+        <div class="promo-info-item">
+          <i class="fas fa-user-graduate"></i>
+          <p>Сопровождение <strong>квалифицированных педагогов</strong></p>
+        </div>
+        <div class="promo-info-item">
+          <i class="fas fa-info-circle"></i>
+          <p>Программа может незначительно корректироваться в зависимости от погодных условий</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Price Section -->
+  <section class="promo-price">
+    <div class="promo-container">
+      <div class="promo-price-card">
+        <div class="promo-price-header">
+          <h3>Что входит в программу?</h3>
+        </div>
+        <div class="promo-price-body">
+          <p class="promo-price-desc">
+            Насыщенная программа с ежедневными экскурсиями, мастер-классами, питанием, транспортом и сопровождением педагогов.
+          </p>
+          <p class="promo-price-highlight">
+            Это не просто день в лагере, а полноценное образовательное путешествие!
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="promo-contact">
+    <div class="promo-container">
+      <div class="promo-contact-content">
+        <div class="promo-contact-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <div class="promo-contact-details">
+            <span class="promo-contact-label">Адрес:</span>
+            <span class="promo-contact-value">Суханова 11, Русская 17/1</span>
+          </div>
+        </div>
+        <div class="promo-contact-item">
+          <i class="fas fa-phone"></i>
+          <div class="promo-contact-details">
+            <a href="tel:+79841929218" class="promo-contact-phone">+7 (984) 192-92-18</a>
+          </div>
+        </div>
+        <div class="promo-contact-item">
+          <i class="fab fa-telegram"></i>
+          <div class="promo-contact-details">
+            <a href="https://t.me/poreshaemvl" class="promo-contact-phone" target="_blank">@poreshaemvl</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="promo-cta">
+    <div class="promo-container">
+      <div class="promo-cta-content">
+        <a href="index.html#form" class="promo-cta-button summer">
+          <span>Записаться в лагерь</span>
+          <i class="fas fa-arrow-right"></i>
+        </a>
+        <p class="promo-cta-note">Количество мест ограничено!</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="promo-footer">
+    <div class="promo-container">
+      <p>&copy; 2026 Порешаем. Все права защищены.</p>
+      <p>
+        <a href="index.html">Главная</a> · 
+        <a href="policy.html" target="_blank">Политика конфиденциальности</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="swiper-bundle.min.js"></script>
+  <script src="summer-camp.js"></script>
+</body>
+</html>
