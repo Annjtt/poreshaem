@@ -709,7 +709,7 @@ body::before {
 }
 
 .promo-schedule-subtitle {
-  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  font-size: clamp(1.1rem, 2.5vw, 1.3rem);
   color: var(--text-secondary);
   opacity: 0.9;
 }
@@ -846,7 +846,7 @@ body::before {
 }
 
 .fas-red {
-  color: #f54c4c !important;
+  color: #fe5f5f !important;
   font-size: 1.4em;
   flex-shrink: 0;
   margin-top: 0.2rem;

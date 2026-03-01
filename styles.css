@@ -11,6 +11,7 @@
   --card-bg-blue: rgba(2, 82, 255, 0.363);
   --card-bg-perpl: rgba(162, 2, 255, 0.349);
   --card-bg-orange: rgba(255, 82, 2, 0.452);
+  --card-bg-tr: rgba(255, 255, 255, 0.02);
   --card-bg-b: rgba(0, 0, 0, 0.40);
   --card-border: rgba(248, 200, 33, 0.9);
   --black: #000000;
@@ -1999,7 +2000,7 @@ p {
   }
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 1200px) {
   /* Оверлей для мобильного меню */
   .nav-menu::before {
     content: '';
@@ -3690,22 +3691,22 @@ textarea:focus {
 
 .offers-grid  .offer-card:nth-child(1) {
   background-image: url('asset/svg/top1.png');
-  background-color: var(--card-bg-blue);
+  background-color: var(--card-bg-tr);
 }
 
 .offers-grid .offer-card:nth-child(2) {
   background-image: url('asset/svg/top2.png');
-  background-color: var(--card-bg-red);
+  background-color: var(--card-bg-tr);
 }
 
 .offers-grid .offer-card:nth-child(3) {
   background-image: url('asset/svg/bottom2.png');
-  background-color: var(--card-bg-perpl);
+  background-color: var(--card-bg-tr);
 }
 
 .offers-grid .offer-card:nth-child(4) {
   background-image: url('asset/svg/bottom.png');
-  background-color: var(--card-bg-orange);
+  background-color: var(--card-bg-tr);
 }
 
 .offer-card {
@@ -4160,7 +4161,6 @@ textarea:focus {
 /* Адаптивность галереи */
 @media (max-width: 1024px) {
   .gallery-swiper {
-    height: 65vh;
     min-height: 450px;
     max-height: 600px;
   }
