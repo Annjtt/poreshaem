@@ -589,7 +589,7 @@ body::before {
 }
 .flip-slide-image { 
   border-radius: var(--card-radius); 
-  width: 80%; height: 100%; 
+  width: 77%; height: 100%; 
   object-fit: cover; 
   box-shadow: var(--shadow); 
 }
@@ -675,7 +675,13 @@ body::before {
 }
 
 .promo-activity-item.highlight {
-  background: rgba(248, 200, 33, 0.15);
+  background: rgba(255, 208, 37, 0.137);
+  border-color: rgba(255, 210, 48, 0.24);
+}
+
+.promo-activity-item.highlight:hover {
+  background: rgba(248, 203, 38, 0.137);
+  transform: translateX(5px);
   border-color: var(--accent);
 }
 
@@ -839,6 +845,13 @@ body::before {
   margin-top: 0.2rem;
 }
 
+.fas-red {
+  color: #f54c4c !important;
+  font-size: 1.4em;
+  flex-shrink: 0;
+  margin-top: 0.2rem;
+}
+
 .promo-info-item p {
   font-size: clamp(1rem, 2vw, 1.1rem);
   color: var(--text);
@@ -856,13 +869,13 @@ body::before {
 }
 
 .promo-price-card {
-  background: linear-gradient(135deg, rgba(178, 218, 255, 0.103), rgba(172, 172, 172, 0.034));
+  background: linear-gradient(135deg, rgba(178, 218, 255, 0.103), rgba(172, 172, 172, 0.158));
   border-radius: 30px;
   backdrop-filter: blur(10px);
   padding: 2.5rem;
   max-width: 700px;
   margin: 0 auto;
-  border: 1px solid rgba(248, 200, 33, 0.3);
+  border: 1px solid rgba(231, 231, 231, 0.3);
   text-align: center;
   box-shadow: var(--shadow);
 }
@@ -1012,7 +1025,7 @@ body::before {
   background: linear-gradient(135deg, var(--accent), var(--secondary));
 }
 
-.promo-cta-button::before {
+.promo-cta-button::before { 
   content: '';
   position: absolute;
   top: 0; left: -100%;
